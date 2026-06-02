@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Item | Find-ER</title>
+    <link rel="icon" href="../assets/images/logo1.png">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/layout.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link rel="stylesheet" href="../assets/css/notifications.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <style>
+        /* Reset margins and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body.find-er-app {
+            background: #f1f5f9;
+            overflow-x: hidden;
+        }
+        
+        /* Main content container - no extra margins */
+        .main-content {
+            margin-left: 68px;
+            width: calc(100% - 68px);
+            background: #f1f5f9;
+            min-height: 100vh;
+        }
+        
+        /* Dashboard container - full width */
+        .dashboard-container {
+            padding: 24px;
+            max-width: 100%;
+            width: 100%;
+            margin: 0;
+        }
+        
+        /* Report container - centered but not too wide */
+        .report-container {
+            max-width: 700px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        /* Form takes full width */
+        .premium-card {
+            width: 100%;
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+        
+        /* Remove extra padding */
+        .step-panel {
+            padding: 24px 28px 32px;
+        }
+        
+        /* Make form compact but readable */
+        .form-group-modern {
+            margin-bottom: 20px;
+        }
+        
+        .input-modern {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 14px;
+        }
+        
+        /* Two-column layout for better use of space */
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        
+        /* Type cards - side by side */
+        .type-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .type-card {
+            padding: 24px 16px;
+            text-align: center;
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .type-card.active {
+            border-color: #2f7fa2;
+            background: rgba(47,127,162,0.05);
+        }
+        
+        .type-icon {
+            font-size: 40px;
+            margin-bottom: 8px;
+        }
+        
+        .type-card h3 {
+            font-size: 16px;
+            margin: 8px 0 4px;
+        }
+        
+        /* Action buttons - full width on mobile */
+        .action-buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            margin-top: 28px;
+        }
+        
+        .btn-premium {
+            padding: 12px 24px;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+        
+        .btn-next-premium {
+            background: linear-gradient(135deg, #2f7fa2, #1a4b63);
+            color: white;
+        }
+        
+        .btn-prev-premium {
+            background: #f1f5f9;
+            color: #475569;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .btn-submit-premium {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            width: 100%;
+        }
+        
+        /* Review grid - compact */
+        .review-grid {
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .review-row {
+            display: flex;
+            padding: 10px 0;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 14px;
+        }
+        
+        .review-row:last-child {
+            border-bottom: none;
+        }
+        
+        .review-label {
+            width: 100px;
+            font-weight: 600;
+            color: #475569;
+        }
+        
+        .review-value {
+            flex: 1;
+            color: #1e293b;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-content {
+                margin-left: 0;
+                width: 100%;
+            }
+            
+            .dashboard-container {
+                padding: 16px;
+            }
+            
+            .step-panel {
+                padding: 20px;
+            }
+            
+            .two-columns {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            
+            .type-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            
+            .review-row {
+                flex-direction: column;
+                gap: 4px;
+            }
+            
+            .review-label {
+                width: auto;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .btn-premium {
+                width: 100%;
+                text-align: center;
+                justify-content: center;
+            }
+        }
+        
+        /* Progress bar */
+        .progress-container {
+            padding: 0 28px 20px;
+        }
+        
+        .progress-bar-wrapper {
+            background: #e2e8f0;
+            border-radius: 10px;
+            height: 6px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #2f7fa2, #10b981);
+            width: 0%;
+            transition: width 0.3s ease;
+            border-radius: 10px;
+        }
+        
+        /* Wizard steps - compact */
+        .wizard-steps {
+            display: flex;
+            justify-content: space-between;
+            padding: 24px 28px 0;
+            position: relative;
+        }
+        
+        .wizard-steps::before {
+            content: '';
+            position: absolute;
+            top: 28px;
+            left: 15%;
+            right: 15%;
+            height: 2px;
+            background: #e2e8f0;
+        }
+        
+        .step {
+            text-align: center;
+            flex: 1;
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .step-circle {
+            width: 40px;
+            height: 40px;
+            margin: 0 auto 8px;
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+            color: #94a3b8;
+            transition: all 0.2s;
+        }
+        
+        .step.active .step-circle {
+            background: #2f7fa2;
+            border-color: #2f7fa2;
+            color: white;
+            box-shadow: 0 0 0 4px rgba(47,127,162,0.2);
+        }
+        
+        .step.completed .step-circle {
+            background: #10b981;
+            border-color: #10b981;
+            color: white;
+        }
+        
+        .step-label {
+            font-size: 10px;
+            color: #94a3b8;
+            font-weight: 600;
+        }
+        
+        .step.active .step-label {
+            color: #2f7fa2;
+        }
+        
+        /* Error styling */
+        .input-modern.error {
+            border-color: #ef4444;
+            background: #fef2f2;
+        }
+        
+        .error-message {
+            color: #ef4444;
+            font-size: 11px;
+            margin-top: 4px;
+            display: block;
+        }
+        
+        /* Upload area */
+        .upload-area-premium {
+            border: 2px dashed #e2e8f0;
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .upload-area-premium:hover {
+            border-color: #2f7fa2;
+            background: rgba(47,127,162,0.05);
+        }
+        
+        .upload-icon {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+        
+        .image-preview-premium {
+            margin-top: 12px;
+            display: inline-block;
+            position: relative;
+        }
+        
+        .image-preview-premium img {
+            max-width: 100px;
+            max-height: 80px;
+            border-radius: 8px;
+        }
+        
+        .remove-image {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            width: 20px;
+            height: 20px;
+            background: #ef4444;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        
+        /* Success panel */
+        .success-premium {
+            text-align: center;
+            padding: 48px 32px;
+        }
+        
+        .success-checkmark {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #10b981, #059669);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .success-checkmark svg {
+            width: 48px;
+            height: 48px;
+            color: white;
+        }
+        
+        .success-premium h2 {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+        
+        .report-id {
+            background: #f1f5f9;
+            padding: 8px 16px;
+            border-radius: 40px;
+            display: inline-block;
+            margin: 16px 0;
+            font-family: monospace;
+        }
+        
+        /* Checkbox */
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin: 20px 0;
+            padding: 12px;
+            background: #f8fafc;
+            border-radius: 12px;
+        }
+        
+        .checkbox-group input {
+            margin-top: 2px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+        
+        .checkbox-group span {
+            font-size: 12px;
+            color: #475569;
+            line-height: 1.4;
+        }
+        
+        /* Loading overlay */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+        
+        .loading-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Header */
+        .report-header {
+            background: linear-gradient(135deg, #f8fafc, #ffffff);
+            padding: 24px 28px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .report-header h1 {
+            font-size: 24px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #2f7fa2, #10b981);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .report-header p {
+            color: #64748b;
+            font-size: 13px;
+            margin-top: 4px;
+        }
+    </style>
+    
+</head>
+<body class="find-er-app">
+    <div class="bg-pattern"></div>
+    <div id="loader-container"></div>
+    
+    <div class="app-container">
+        <div id="sidebar-container"></div>
+        
+        <main class="main-content">
+            <div id="top-header-container"></div>
+            
+            <div class="dashboard-container">
+                <div class="report-container">
+                    <!-- Main Form Card -->
+                    <div id="reportFormContainer" class="premium-card">
+                        <div class="report-header">
+                            <h1>📝 Report Lost/Found Item</h1>
+                            <p>Help us reunite items with their owners</p>
+                        </div>
+                        
+                        <!-- Wizard Steps -->
+                        <div class="wizard-steps">
+                            <div class="step active" data-step="1">
+                                <div class="step-circle">1</div>
+                                <div class="step-label">TYPE</div>
+                            </div>
+                            <div class="step" data-step="2">
+                                <div class="step-circle">2</div>
+                                <div class="step-label">ITEM</div>
+                            </div>
+                            <div class="step" data-step="3">
+                                <div class="step-circle">3</div>
+                                <div class="step-label">CONTACT</div>
+                            </div>
+                            <div class="step" data-step="4">
+                                <div class="step-circle">4</div>
+                                <div class="step-label">REVIEW</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Progress Bar -->
+                        <div class="progress-container">
+                            <div class="progress-bar-wrapper">
+                                <div class="progress-fill" id="progressFill"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- STEP 1: Report Type -->
+                        <div class="step-panel active" id="step1">
+                            <div class="type-grid">
+                                <div class="type-card" data-type="lost">
+                                    <div class="type-icon">🔍</div>
+                                    <h3>Lost Item</h3>
+                                    <p>I lost something</p>
+                                </div>
+                                <div class="type-card" data-type="found">
+                                    <div class="type-icon">✅</div>
+                                    <h3>Found Item</h3>
+                                    <p>I found something</p>
+                                </div>
+                            </div>
+                            <div class="action-buttons">
+                                <button class="btn-premium btn-next-premium" id="nextStep1">Continue →</button>
+                            </div>
+                        </div>
+                        
+                        <!-- STEP 2: Item Details -->
+                        <div class="step-panel" id="step2" style="display: none;">
+                            <div class="form-group-modern">
+                                <label>Item Name *</label>
+                                <input type="text" id="itemName" class="input-modern" placeholder="e.g., College ID Card, iPhone, Backpack">
+                            </div>
+                            
+                            <div class="two-columns">
+                                <div class="form-group-modern">
+                                    <label>Category *</label>
+                                    <select id="itemCategory" class="input-modern">
+                                        <option value="">Select</option>
+                                        <option>ID Card</option>
+                                        <option>Electronics</option>
+                                        <option>Books</option>
+                                        <option>Accessories</option>
+                                        <option>Keys</option>
+                                        <option>Bag</option>
+                                        <option>Water Bottle</option>
+                                        <option>Wallet</option>
+                                        <option>Other</option>
+                                    </select>
+                                </div>
+                                <div class="form-group-modern">
+                                    <label>Location *</label>
+                                    <input type="text" id="itemLocation" class="input-modern" placeholder="Where?">
+                                </div>
+                            </div>
+                            
+                            <div class="two-columns">
+                                <div class="form-group-modern">
+                                    <label>Date *</label>
+                                    <input type="date" id="itemDate" class="input-modern">
+                                </div>
+                                <div class="form-group-modern">
+                                    <label>Photo (Optional)</label>
+                                    <div class="upload-area-premium" id="uploadArea">
+                                        <div class="upload-icon">📸</div>
+                                        <div style="font-size: 12px;">Click to upload</div>
+                                        <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                                    </div>
+                                    <div id="imagePreview"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group-modern">
+                                <label>Description *</label>
+                                <textarea id="itemDescription" class="input-modern" rows="3" placeholder="Color, brand, unique marks, contents..."></textarea>
+                            </div>
+                            
+                            <div class="action-buttons">
+                                <button class="btn-premium btn-prev-premium" id="prevStep2">← Back</button>
+                                <button class="btn-premium btn-next-premium" id="nextStep2">Continue →</button>
+                            </div>
+                        </div>
+                        
+                        <!-- STEP 3: Contact Information -->
+                        <div class="step-panel" id="step3" style="display: none;">
+                            <div class="two-columns">
+                                <div class="form-group-modern">
+                                    <label>Full Name *</label>
+                                    <input type="text" id="fullName" class="input-modern" placeholder="Your full name">
+                                </div>
+                                <div class="form-group-modern">
+                                    <label>College ID *</label>
+                                    <input type="text" id="collegeId" class="input-modern" placeholder="e.g., CSE2023001">
+                                </div>
+                            </div>
+                            
+                            <div class="two-columns">
+                                <div class="form-group-modern">
+                                    <label>Phone Number *</label>
+                                    <input type="tel" id="phoneNumber" class="input-modern" placeholder="10-digit mobile">
+                                </div>
+                                <div class="form-group-modern">
+                                    <label>Email (Optional)</label>
+                                    <input type="email" id="email" class="input-modern" placeholder="your@college.edu">
+                                </div>
+                            </div>
+                            
+                            <div class="action-buttons">
+                                <button class="btn-premium btn-prev-premium" id="prevStep3">← Back</button>
+                                <button class="btn-premium btn-next-premium" id="nextStep3">Review →</button>
+                            </div>
+                        </div>
+                        
+                        <!-- STEP 4: Review & Submit -->
+                        <div class="step-panel" id="step4" style="display: none;">
+                            <div class="review-grid" id="reviewContent"></div>
+                            
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="confirmCheck">
+                                <span>I confirm that all information provided is accurate and complete.</span>
+                            </div>
+                            
+                            <div class="action-buttons">
+                                <button class="btn-premium btn-prev-premium" id="prevStep4">← Back</button>
+                                <button class="btn-premium btn-submit-premium" id="submitBtn">✓ Submit Report</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Success Panel -->
+                    <div id="successPanel" class="premium-card" style="display: none;">
+                        <div class="success-premium">
+                            <div class="success-checkmark">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                    <path d="M20 6L9 17L4 12" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <h2>Report Submitted! 🎉</h2>
+                            <p>Your report has been sent to the admin</p>
+                            <div class="report-id" id="reportIdDisplay"></div>
+                            <button id="goToDashboard" class="btn-premium btn-submit-premium" style="width: auto; padding: 10px 24px; margin-top: 16px;">Go to Dashboard</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="footer-container"></div>
+        </main>
+    </div>
+    
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <button type="button" id="backToTopBtn" class="back-to-top"><i data-lucide="chevron-up"></i></button>
+
+    <script src="../js/constants.js"></script>
+    <script src="../js/helpers.js"></script>
+    <script src="../js/storage.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/ui.js"></script>
+    <script src="../js/dropdowns.js"></script>
+    <script src="../js/modals.js"></script>
+    <script src="../js/loaders.js"></script>
+    <script src="../js/notifications.js"></script>
+    <script src="../js/search.js"></script>
+    <script src="../js/dashboard.js"></script>
+    <script src="../js/app.js"></script>
+
+    <script>
+        // ========== FIXED REPORT PAGE SCRIPT ==========
+        
+        let currentStep = 1;
+        let reportType = 'lost';
+        let imageBase64 = null;
+        let currentUser = null;
+        
+        // Get current user from storage module if available, fall back to sessionStorage
+        if (window.Storage && typeof window.Storage.getCurrentUser === 'function') {
+            currentUser = window.Storage.getCurrentUser();
+        } else {
+            try {
+                currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+            } catch (e) {
+                currentUser = null;
+            }
+        }
+        
+        // Load components
+        Promise.all([
+            fetch('../components/sidebar.html').then(res => res.text()),
+            fetch('../components/top-header.html').then(res => res.text()),
+            fetch('../components/footer.html').then(res => res.text()),
+            fetch('../components/loader.html').then(res => res.text())
+        ]).then(([sidebar, header, footer, loader]) => {
+            document.getElementById('sidebar-container').innerHTML = sidebar;
+            document.getElementById('top-header-container').innerHTML = header;
+            document.getElementById('footer-container').innerHTML = footer;
+            document.getElementById('loader-container').innerHTML = loader;
+            
+            setTimeout(() => {
+                if (window.lucide) lucide.createIcons();
+                if (window.FindERApp) window.FindERApp.reinit();
+                initReportPage();
+                const loaderEl = document.getElementById('pageLoader');
+                if (loaderEl) { loaderEl.classList.add('hidden'); setTimeout(() => loaderEl.style.display = 'none', 500); }
+            }, 100);
+        });
+        
+        function initReportPage() {
+            // Set default date
+            document.getElementById('itemDate').value = new Date().toISOString().split('T')[0];
+            
+            // Pre-fill user info
+            if (currentUser) {
+                document.getElementById('fullName').value = currentUser.name || '';
+                document.getElementById('collegeId').value = currentUser.collegeId || '';
+                document.getElementById('email').value = currentUser.email || '';
+            }
+            
+            // Type selection
+            const typeCards = document.querySelectorAll('.type-card');
+            typeCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    typeCards.forEach(c => c.classList.remove('active'));
+                    card.classList.add('active');
+                    reportType = card.dataset.type;
+                });
+            });
+            
+            // File upload
+            const uploadArea = document.getElementById('uploadArea');
+            const fileInput = document.getElementById('fileInput');
+            const imagePreview = document.getElementById('imagePreview');
+            
+            uploadArea.addEventListener('click', () => fileInput.click());
+            fileInput.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                        imageBase64 = event.target.result;
+                        imagePreview.innerHTML = `
+                            <div class="image-preview-premium">
+                                <img src="${imageBase64}" alt="Preview">
+                                <div class="remove-image" onclick="removeImage()">×</div>
+                            </div>
+                        `;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+            
+            // Navigation
+            document.getElementById('nextStep1').addEventListener('click', () => {
+                currentStep = 2;
+                updateUI();
+            });
+            
+            document.getElementById('prevStep2').addEventListener('click', () => {
+                currentStep = 1;
+                updateUI();
+            });
+            
+            document.getElementById('nextStep2').addEventListener('click', () => {
+                if (validateStep2()) {
+                    currentStep = 3;
+                    updateUI();
+                }
+            });
+            
+            document.getElementById('prevStep3').addEventListener('click', () => {
+                currentStep = 2;
+                updateUI();
+            });
+            
+            document.getElementById('nextStep3').addEventListener('click', () => {
+                if (validateStep3()) {
+                    updateReviewSection();
+                    currentStep = 4;
+                    updateUI();
+                }
+            });
+            
+            document.getElementById('prevStep4').addEventListener('click', () => {
+                currentStep = 3;
+                updateUI();
+            });
+            
+            document.getElementById('submitBtn').addEventListener('click', submitReport);
+            document.getElementById('goToDashboard').addEventListener('click', () => {
+                window.location.href = 'student-dashboard.html';
+            });
+            
+            // Click on steps to navigate back
+            document.querySelectorAll('.step').forEach(step => {
+                step.addEventListener('click', () => {
+                    const stepNum = parseInt(step.dataset.step);
+                    if (stepNum < currentStep) {
+                        currentStep = stepNum;
+                        updateUI();
+                    }
+                });
+            });
+        }
+        
+        window.removeImage = function() {
+            imageBase64 = null;
+            document.getElementById('imagePreview').innerHTML = '';
+            document.getElementById('fileInput').value = '';
+        };
+        
+        function validateStep2() {
+            const itemName = document.getElementById('itemName');
+            const itemCategory = document.getElementById('itemCategory');
+            const itemLocation = document.getElementById('itemLocation');
+            const itemDate = document.getElementById('itemDate');
+            const itemDescription = document.getElementById('itemDescription');
+            
+            let isValid = true;
+            
+            if (!itemName.value.trim()) { showError(itemName, 'Enter item name'); isValid = false; }
+            if (!itemCategory.value) { showError(itemCategory, 'Select category'); isValid = false; }
+            if (!itemLocation.value.trim()) { showError(itemLocation, 'Enter location'); isValid = false; }
+            if (!itemDate.value) { showError(itemDate, 'Select date'); isValid = false; }
+            if (!itemDescription.value.trim()) { showError(itemDescription, 'Enter description'); isValid = false; }
+            
+            return isValid;
+        }
+        
+        function validateStep3() {
+            const fullName = document.getElementById('fullName');
+            const collegeId = document.getElementById('collegeId');
+            const phoneNumber = document.getElementById('phoneNumber');
+            
+            let isValid = true;
+            
+            if (!fullName.value.trim()) { showError(fullName, 'Enter your name'); isValid = false; }
+            if (!collegeId.value.trim()) { showError(collegeId, 'Enter College ID'); isValid = false; }
+            if (!phoneNumber.value.trim()) { showError(phoneNumber, 'Enter phone number'); isValid = false; }
+            else if (!/^\d{10}$/.test(phoneNumber.value.trim())) { showError(phoneNumber, 'Enter valid 10-digit phone'); isValid = false; }
+            
+            return isValid;
+        }
+        
+        function showError(element, message) {
+            element.classList.add('error');
+            
+            // Remove existing error message
+            const existingError = element.parentElement.querySelector('.error-message');
+            if (existingError) existingError.remove();
+            
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'error-message';
+            errorDiv.textContent = message;
+            element.parentElement.appendChild(errorDiv);
+            
+            setTimeout(() => {
+                element.classList.remove('error');
+                if (errorDiv) errorDiv.remove();
+            }, 3000);
+        }
+        
+        function updateReviewSection() {
+            const reviewContent = document.getElementById('reviewContent');
+            const typeDisplay = reportType === 'lost' ? '🔍 Lost Item' : '✅ Found Item';
+            
+            reviewContent.innerHTML = `
+                <div class="review-row"><div class="review-label">Type:</div><div class="review-value">${typeDisplay}</div></div>
+                <div class="review-row"><div class="review-label">Item:</div><div class="review-value">${escapeHtml(document.getElementById('itemName').value)}</div></div>
+                <div class="review-row"><div class="review-label">Category:</div><div class="review-value">${escapeHtml(document.getElementById('itemCategory').value)}</div></div>
+                <div class="review-row"><div class="review-label">Location:</div><div class="review-value">${escapeHtml(document.getElementById('itemLocation').value)}</div></div>
+                <div class="review-row"><div class="review-label">Date:</div><div class="review-value">${formatDate(document.getElementById('itemDate').value)}</div></div>
+                <div class="review-row"><div class="review-label">Description:</div><div class="review-value">${escapeHtml(document.getElementById('itemDescription').value)}</div></div>
+                <div class="review-row"><div class="review-label">Name:</div><div class="review-value">${escapeHtml(document.getElementById('fullName').value)}</div></div>
+                <div class="review-row"><div class="review-label">College ID:</div><div class="review-value">${escapeHtml(document.getElementById('collegeId').value)}</div></div>
+                <div class="review-row"><div class="review-label">Phone:</div><div class="review-value">${escapeHtml(document.getElementById('phoneNumber').value)}</div></div>
+                ${document.getElementById('email').value ? `<div class="review-row"><div class="review-label">Email:</div><div class="review-value">${escapeHtml(document.getElementById('email').value)}</div></div>` : ''}
+                ${imageBase64 ? `<div class="review-row"><div class="review-label">Photo:</div><div class="review-value">✓ Uploaded</div></div>` : ''}
+            `;
+        }
+        
+        function updateUI() {
+            // Update panels
+            for (let i = 1; i <= 4; i++) {
+                const panel = document.getElementById(`step${i}`);
+                if (panel) panel.style.display = i === currentStep ? 'block' : 'none';
+            }
+            
+            // Update steps
+            const steps = document.querySelectorAll('.step');
+            steps.forEach((step, index) => {
+                const stepNum = index + 1;
+                step.classList.remove('active', 'completed');
+                if (stepNum < currentStep) step.classList.add('completed');
+                else if (stepNum === currentStep) step.classList.add('active');
+            });
+            
+            // Update progress bar
+            const progress = ((currentStep - 1) / 3) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+            
+            // Re-init icons
+            if (window.lucide) lucide.createIcons();
+        }
+        
+        async function submitReport() {
+            if (!document.getElementById('confirmCheck').checked) {
+                alert('Please confirm that the information is accurate.');
+                return;
+            }
+            
+            // Show loading
+            document.getElementById('loadingOverlay').classList.add('active');
+            
+            await new Promise(resolve => setTimeout(resolve, 500));
+            
+            const report = {
+                id: 'RPT_' + Date.now(),
+                type: reportType,
+                name: document.getElementById('itemName').value.trim(),
+                category: document.getElementById('itemCategory').value,
+                location: document.getElementById('itemLocation').value.trim(),
+                date: document.getElementById('itemDate').value,
+                description: document.getElementById('itemDescription').value.trim(),
+                phone: document.getElementById('phoneNumber').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                reporterId: document.getElementById('collegeId').value.trim(),
+                reportedBy: {
+                    name: document.getElementById('fullName').value.trim(),
+                    collegeId: document.getElementById('collegeId').value.trim(),
+                    email: document.getElementById('email').value.trim(),
+                    phone: document.getElementById('phoneNumber').value.trim()
+                },
+                status: 'pending',
+                reportedAt: new Date().toISOString(),
+                image: imageBase64
+            };
+            
+            // Save to storage
+            const reports = JSON.parse(localStorage.getItem('findER_reports') || '[]');
+            reports.push(report);
+            localStorage.setItem('findER_reports', JSON.stringify(reports));
+            
+            document.getElementById('loadingOverlay').classList.remove('active');
+            
+            // Show success
+            document.getElementById('reportFormContainer').style.display = 'none';
+            document.getElementById('successPanel').style.display = 'block';
+            document.getElementById('reportIdDisplay').textContent = report.id;
+            
+            // Confetti effect
+            for (let i = 0; i < 30; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.cssText = `
+                    position: fixed; top: -10px; left: ${Math.random() * 100}%;
+                    width: ${Math.random() * 8 + 4}px; height: ${Math.random() * 12 + 6}px;
+                    background: ${['#2f7fa2', '#10b981', '#f59e0b'][Math.floor(Math.random() * 3)]};
+                    border-radius: ${Math.random() > 0.5 ? '50%' : '2px'};
+                    pointer-events: none; z-index: 10000;
+                    animation: fall ${Math.random() * 2 + 2}s linear forwards;
+                `;
+                document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 4000);
+            }
+        }
+        
+        function escapeHtml(str) {
+            if (!str) return '';
+            return String(str).replace(/[&<>]/g, m => m === '&' ? '&amp;' : m === '<' ? '&lt;' : '&gt;');
+        }
+        
+        function formatDate(dateStr) {
+            if (!dateStr) return 'N/A';
+            try { return new Date(dateStr).toLocaleDateString(); } catch(e) { return dateStr; }
+        }
+        
+        // Add confetti animation
+        const style = document.createElement('style');
+        style.textContent = `@keyframes fall { 0% { transform: translateY(0) rotate(0deg); opacity: 1; } 100% { transform: translateY(100vh) rotate(360deg); opacity: 0; } }`;
+        document.head.appendChild(style);
+    </script>
+    
+</body>
+</html>

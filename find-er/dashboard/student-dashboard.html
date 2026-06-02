@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard | Find-ER</title>
+    <link rel="icon" href="../assets/images/logo1.png">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/layout.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link rel="stylesheet" href="../assets/css/notifications.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <style>
+        /* Additional dashboard fixes */
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 24px; }
+        .actions-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 24px; }
+        .stat-card, .action-card { background: white; border-radius: 16px; padding: 20px; transition: all 0.2s; cursor: pointer; text-decoration: none; color: inherit; display: block; }
+        .stat-card:hover, .action-card:hover { transform: translateY(-4px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .stat-icon, .action-icon { width: 48px; height: 48px; background: #eef2ff; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 16px; }
+        .stat-content h3 { font-size: 28px; font-weight: 800; margin: 0; color: #1e293b; }
+        .stat-content p { font-size: 13px; color: #64748b; margin: 4px 0 0; }
+        .action-card h3 { font-size: 16px; font-weight: 700; margin: 0 0 6px; }
+        .action-card p { font-size: 13px; color: #64748b; margin: 0; }
+        .welcome-card { background: linear-gradient(135deg, #2f7fa2, #1a4b63); border-radius: 20px; padding: 32px; color: white; display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+        .table-container { background: white; border-radius: 16px; padding: 20px; margin-bottom: 24px; border: 1px solid #e2e8f0; }
+        .activity-table { width: 100%; border-collapse: collapse; }
+        .activity-table th, .activity-table td { padding: 12px; text-align: left; border-bottom: 1px solid #e2e8f0; }
+        .activity-table th { color: #64748b; font-size: 12px; font-weight: 600; }
+        .status-badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+        .status-pending { background: #fef3c7; color: #d97706; }
+        .status-verified { background: #dbeafe; color: #2563eb; }
+        .status-ready { background: #dcfce7; color: #16a34a; }
+        .status-matched { background: #f3e8ff; color: #9333ea; }
+        .status-collected { background: #dcfce7; color: #16a34a; }
+        @media (max-width: 768px) { .stats-grid { grid-template-columns: 1fr; } .actions-grid { grid-template-columns: 1fr; } .welcome-card { flex-direction: column; text-align: center; } }
+        .recently-viewed-strip { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 16px; margin-bottom: 24px; }
+        .recent-mini-card { background: white; border-radius: 12px; overflow: hidden; text-decoration: none; color: inherit; border: 1px solid #e2e8f0; transition: all 0.2s; }
+        .recent-mini-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .recent-mini-card img { width: 100%; height: 100px; object-fit: cover; }
+        .recent-mini-card .meta { padding: 8px; font-size: 12px; font-weight: 600; text-align: center; }
+    </style>
+    <style>
+    /* Force remove any extra spacing */
+    html, body {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    .main-content {
+        padding-top: 0 !important;
+        margin-top: 0 !important;
+    }
+    .top-header {
+        margin-top: 0 !important;
+        top: 0 !important;
+    }
+</style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="find-er-app">
+    <div class="bg-pattern"></div>
+    <div id="loader-container"></div>
+    
+    <div class="app-container">
+        <div id="sidebar-container"></div>
+        
+        <main class="main-content">
+            <div id="top-header-container"></div>
+            
+            <div class="dashboard-container">
+                <!-- Welcome Card -->
+                <div class="welcome-card" data-reveal>
+                    <div class="welcome-content">
+                        <h1>Good <span id="timeOfDay">morning</span>, <span class="user-highlight" id="welcomeName">Student</span> 👋</h1>
+                        <p>Here's what's happening on campus today</p>
+                    </div>
+                    <div class="welcome-badge">
+                        <span class="badge-label">Member since</span>
+                        <span class="badge-value" id="memberSinceBadge">2024</span>
+                    </div>
+                </div>
+
+                <!-- Stats Grid -->
+                <div class="stats-grid">
+                    <a href="lost.html" class="stat-card">
+                        <div class="stat-icon">📦</div>
+                        <div class="stat-content">
+                            <h3 id="userActiveReports">0</h3>
+                            <p>Active Reports</p>
+                        </div>
+                    </a>
+                    <a href="found.html" class="stat-card">
+                        <div class="stat-icon">✅</div>
+                        <div class="stat-content">
+                            <h3 id="userRecoveredItems">0</h3>
+                            <p>Recovered Items</p>
+                        </div>
+                    </a>
+                    <div class="stat-card">
+                        <div class="stat-icon">📉</div>
+                        <div class="stat-content">
+                            <h3 id="statCampusLost">0</h3>
+                            <p>Campus Total Lost</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📈</div>
+                        <div class="stat-content">
+                            <h3 id="statCampusFound">0</h3>
+                            <p>Campus Total Found</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Success Rate Card -->
+                <div class="stat-card" style="margin-bottom: 24px;">
+                    <div class="stat-content">
+                        <p style="margin: 0 0 4px; font-size: 12px; color: #64748b;">Your success rate</p>
+                        <h3 id="userSuccessRate">0%</h3>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <h2 class="section-title-dash"><span>⚡</span> Quick Actions</h2>
+                <div class="actions-grid">
+                    <a href="lost.html" class="action-card">
+                        <div class="action-icon">🔍</div>
+                        <h3>Browse Lost</h3>
+                        <p>See items reported missing on campus.</p>
+                    </a>
+                    <a href="found.html" class="action-card">
+                        <div class="action-icon">📦</div>
+                        <h3>Check Found</h3>
+                        <p>Review items turned in to Lost & Found.</p>
+                    </a>
+                    <a href="report.html" class="action-card">
+                        <div class="action-icon">📝</div>
+                        <h3>Report Item</h3>
+                        <p>Submit a lost or found report in minutes.</p>
+                    </a>
+                    <a href="../instructions.html" class="action-card">
+                        <div class="action-icon">📖</div>
+                        <h3>Instructions</h3>
+                        <p>Rules, pickup, and how matching works.</p>
+                    </a>
+                </div>
+
+                <!-- Recently Viewed -->
+                <h2 class="section-title-dash" data-reveal><span>🕐</span> Recently Viewed</h2>
+                <div class="recently-viewed-strip" id="recentlyViewedRow" data-reveal></div>
+
+                <!-- Recent Activity -->
+                <div class="table-container" data-reveal>
+                    <div class="table-header">
+                        <h2>📅 Recent Activity</h2>
+                        <span class="table-badge">Last 7 days</span>
+                    </div>
+                    <table class="activity-table">
+                        <thead>
+                            <tr><th>Item</th><th>Type</th><th>Date</th><th>Location</th><th>Status</th></tr>
+                        </thead>
+                        <tbody id="studentActivityTable"></tbody>
+                    </table>
+                </div>
+
+                <!-- Campus Overview -->
+                <h2 class="section-title-dash"><span>🏛️</span> Campus Overview</h2>
+                <div class="stats-grid">
+                    <div class="stat-card"><div class="stat-icon">📉</div><div class="stat-content"><h3 id="campusTotalLost">0</h3><p>Total Lost</p></div></div>
+                    <div class="stat-card"><div class="stat-icon">📈</div><div class="stat-content"><h3 id="campusTotalFound">0</h3><p>Total Found</p></div></div>
+                    <div class="stat-card"><div class="stat-icon">⏳</div><div class="stat-content"><h3 id="campusPendingMatch">0</h3><p>Pending Match</p></div></div>
+                    <div class="stat-card"><div class="stat-icon">🎉</div><div class="stat-content"><h3 id="campusTotalRecovered">0</h3><p>Recovered</p></div></div>
+                </div>
+            </div>
+            
+            <div id="footer-container"></div>
+        </main>
+    </div>
+
+    <button type="button" id="backToTopBtn" class="back-to-top"><i data-lucide="chevron-up"></i></button>
+
+    <script src="../js/constants.js"></script>
+    <script src="../js/helpers.js"></script>
+    <script src="../js/storage.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/ui.js"></script>
+    <script src="../js/dropdowns.js"></script>
+    <script src="../js/modals.js"></script>
+    <script src="../js/loaders.js"></script>
+    <script src="../js/notifications.js"></script>
+    <script src="../js/search.js"></script>
+    <script src="../js/dashboard.js"></script>
+    <script src="../js/app.js"></script>
+    
+    <script>
+        // Load components
+        Promise.all([
+            fetch('../components/sidebar.html').then(res => res.text()),
+            fetch('../components/top-header.html').then(res => res.text()),
+            fetch('../components/footer.html').then(res => res.text()),
+            fetch('../components/loader.html').then(res => res.text())
+        ]).then(([sidebar, header, footer, loader]) => {
+            document.getElementById('sidebar-container').innerHTML = sidebar;
+            document.getElementById('top-header-container').innerHTML = header;
+            document.getElementById('footer-container').innerHTML = footer;
+            document.getElementById('loader-container').innerHTML = loader;
+            
+            setTimeout(() => {
+                if (window.lucide) lucide.createIcons();
+                if (window.FindERApp) window.FindERApp.reinit();
+                // Hide loader
+                const loaderEl = document.getElementById('pageLoader');
+                if (loaderEl) { loaderEl.classList.add('hidden'); setTimeout(() => loaderEl.style.display = 'none', 500); }
+            }, 100);
+        });
+    </script>
+</body>
+</html>

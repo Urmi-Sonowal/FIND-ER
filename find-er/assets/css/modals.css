@@ -1,0 +1,297 @@
+/* ========================================
+   FIND-ER MODALS CSS
+   Modal dialog system
+   ======================================== */
+
+/* Modal Container */
+.find-modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--dur-base);
+    pointer-events: none;
+}
+
+.find-modal.show,
+.find-modal.z-modal.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* Modal Overlay */
+.modal-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+}
+
+/* Modal Container */
+.modal-container {
+    position: relative;
+    background: var(--surface);
+    border-radius: var(--radius-2xl);
+    max-width: 500px;
+    width: 90%;
+    box-shadow: var(--shadow-xl);
+    border: 1px solid var(--border);
+    transform: scale(0.95) translateY(10px);
+    transition: transform var(--dur-base) var(--spring);
+    z-index: 1;
+}
+
+.find-modal.show .modal-container {
+    transform: scale(1) translateY(0);
+}
+
+/* Modal Header */
+.modal-header {
+    background: var(--surface-2);
+    border-bottom: 1px solid var(--border);
+    padding: 20px 22px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
+}
+
+.modal-header .modal-icon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.modal-title {
+    font-size: 18px;
+    font-weight: 700;
+    flex: 1;
+    margin: 0;
+    color: var(--text-1);
+}
+
+.modal-close {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    background: var(--surface);
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 1;
+    transition: all 0.2s;
+    color: var(--text-3);
+}
+
+.modal-close:hover {
+    background: var(--danger-bg);
+    color: var(--danger);
+    border-color: var(--danger);
+}
+
+/* Modal Content */
+.modal-content {
+    padding: 22px;
+    max-height: 55vh;
+    overflow-y: auto;
+    color: var(--text-2);
+    line-height: 1.6;
+}
+
+.modal-content p {
+    margin-bottom: 12px;
+}
+
+.modal-content p:last-child {
+    margin-bottom: 0;
+}
+
+.modal-content ul,
+.modal-content ol {
+    margin: 12px 0;
+    padding-left: 20px;
+}
+
+.modal-content li {
+    margin-bottom: 6px;
+}
+
+.modal-content strong {
+    color: var(--text-1);
+}
+
+/* Modal Actions */
+.modal-actions {
+    background: var(--surface-2);
+    border-top: 1px solid var(--border);
+    padding: 18px 22px;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+}
+
+.modal-actions .btn {
+    min-width: 80px;
+}
+
+/* Modal Sizes */
+.modal-sm .modal-container {
+    max-width: 400px;
+}
+
+.modal-lg .modal-container {
+    max-width: 700px;
+}
+
+.modal-xl .modal-container {
+    max-width: 900px;
+    width: 95%;
+}
+
+/* Modal Types */
+.modal-success .modal-header {
+    background: #dcfce7;
+    border-bottom-color: #bbf7d0;
+}
+
+.modal-success .modal-icon {
+    color: #16a34a;
+}
+
+.modal-error .modal-header {
+    background: #fee2e2;
+    border-bottom-color: #fecaca;
+}
+
+.modal-error .modal-icon {
+    color: #dc2626;
+}
+
+.modal-warning .modal-header {
+    background: #fef3c7;
+    border-bottom-color: #fde68a;
+}
+
+.modal-warning .modal-icon {
+    color: #d97706;
+}
+
+.modal-info .modal-header {
+    background: #dbeafe;
+    border-bottom-color: #bfdbfe;
+}
+
+.modal-info .modal-icon {
+    color: #2563eb;
+}
+
+/* Confetti Animation for Success Modals */
+.modal-success .confetti-layer {
+    position: relative;
+    height: 120px;
+    overflow: hidden;
+    margin-top: -22px;
+}
+
+.modal-success .confetti-piece {
+    position: absolute;
+    width: 8px;
+    height: 12px;
+    top: 0;
+    animation: confetti-fall 2s ease-in forwards;
+}
+
+@keyframes confetti-fall {
+    to {
+        transform: translateY(120px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Responsive Modals */
+@media (max-width: 640px) {
+    .modal-container {
+        max-width: calc(100% - 40px);
+    }
+    
+    .modal-header {
+        padding: 16px 18px;
+    }
+    
+    .modal-content {
+        padding: 18px;
+        max-height: 50vh;
+    }
+    
+    .modal-actions {
+        padding: 14px 18px;
+    }
+    
+    .modal-actions .btn {
+        flex: 1;
+    }
+}
+
+/* Modal Loading State */
+.modal-loading .modal-content {
+    text-align: center;
+    padding: 40px;
+}
+
+.modal-loading .loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--primary-200);
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    animation: modalSpin 0.8s linear infinite;
+    margin: 0 auto 16px;
+}
+
+@keyframes modalSpin {
+    to { transform: rotate(360deg); }
+}
+
+/* Modal Form Styles */
+.modal-form .form-group {
+    margin-bottom: 16px;
+}
+
+.modal-form .form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-2);
+    margin-bottom: 6px;
+}
+
+.modal-form .form-group input,
+.modal-form .form-group select,
+.modal-form .form-group textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-md);
+    font-size: 14px;
+    font-family: inherit;
+    background: var(--surface);
+    color: var(--text-1);
+}
+
+.modal-form .form-group input:focus,
+.modal-form .form-group select:focus,
+.modal-form .form-group textarea:focus {
+    outline: none;
+    border-color: var(--brand-1);
+    box-shadow: var(--brand-glow);
+}

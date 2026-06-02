@@ -1,0 +1,53 @@
+<header class="top-header">
+    <div class="header-left">
+        <button type="button" class="menu-toggle" aria-label="Open menu">
+            <i data-lucide="menu"></i>
+        </button>
+        <h1 class="page-title" id="pageTitle">Dashboard</h1>
+    </div>
+    <div class="header-center">
+        <div class="header-search-wrap">
+            <div class="header-search">
+                <i data-lucide="search"></i>
+                <input type="search" id="globalSearchInput" placeholder="Search items..." autocomplete="off">
+                <span class="search-shortcut">⌘K</span>
+            </div>
+            <div id="globalSearchDropdown" class="global-search-dropdown"></div>
+        </div>
+    </div>
+    <div class="header-right">
+        <button type="button" id="quickReportBtn" class="btn-quick-report">
+            <i data-lucide="plus"></i>
+            <span>Quick Report</span>
+        </button>
+        <button type="button" class="header-notifications" aria-label="Notifications">
+            <i data-lucide="bell"></i>
+            <span class="notification-badge" id="headerNotifBadge">0</span>
+        </button>
+        <button type="button" class="theme-toggle-header" data-theme-toggle title="Toggle theme">
+            <i data-lucide="sun"></i>
+        </button>
+        <div class="header-user-chip" id="headerUserChip">
+            <div class="user-avatar-small" id="headerAvatar"></div>
+            <div class="header-user-meta">
+                <span class="user-name" id="headerUserName">User</span>
+                <span class="user-role" id="headerUserRole">STUDENT</span>
+            </div>
+        </div>
+        <div class="profile-dropdown" id="profileDropdown">
+            <a href="profile.html">
+                <i data-lucide="user"></i>
+                View Profile
+            </a>
+            <a href="profile.html#security">
+                <i data-lucide="settings"></i>
+                Settings
+            </a>
+            <hr>
+            <button class="logout-dd" id="profileDropdownLogout">
+                <i data-lucide="log-out"></i>
+                Logout
+            </button>
+        </div>
+    </div>
+</header>

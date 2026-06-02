@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account – Find-ER</title>
+    <link rel="icon" href="assets/images/logo1.png">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/layout.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/utilities.css">
+    <link rel="stylesheet" href="assets/css/auth.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+
+    <div id="loader-container"></div>
+
+    <!-- DECORATIVE BACKGROUND ELEMENTS -->
+    <div class="bg-circle circle-1"></div>
+    <div class="bg-circle circle-2"></div>
+    <div class="bg-circle circle-3"></div>
+    <div class="bg-pattern"></div>
+
+    <!-- NAVIGATION -->
+    <div id="navbar-container"></div>
+
+    <main class="auth-main">
+        <!-- REGISTER CARD -->
+        <div class="auth-card register-card">
+            
+            <!-- DECORATIVE HEADER -->
+            <div class="auth-header">
+                <div class="auth-icon-wrapper">
+                    <div class="auth-icon">📝</div>
+                </div>
+                <h1 class="auth-title">Create Account</h1>
+                <p class="auth-subtitle">Join the campus lost & found community</p>
+            </div>
+
+            <!-- REGISTER FORM -->
+            <form class="auth-form" id="registerForm">
+                
+                <!-- PROGRESS BAR -->
+                <div class="register-progress">
+                    <div class="progress-step active" data-step="1">
+                        <span class="step-number">1</span>
+                        <span class="step-label">Personal</span>
+                    </div>
+                    <div class="progress-step" data-step="2">
+                        <span class="step-number">2</span>
+                        <span class="step-label">Academic</span>
+                    </div>
+                    <div class="progress-step" data-step="3">
+                        <span class="step-number">3</span>
+                        <span class="step-label">Security</span>
+                    </div>
+                </div>
+
+                <!-- STEP 1: PERSONAL INFORMATION -->
+                <div class="register-step active" id="step1">
+                    <h3 class="step-title">Personal Information</h3>
+                    
+                    <div class="auth-input-group">
+                        <label class="auth-label">
+                            <span class="auth-label-icon">👤</span>
+                            Full Name
+                        </label>
+                        <input type="text" class="auth-input" placeholder="Enter your full name" required>
+                        <span class="input-focus-border"></span>
+                    </div>
+
+                    <div class="auth-input-group">
+                        <label class="auth-label">
+                            <span class="auth-label-icon">🆔</span>
+                            College ID
+                        </label>
+                        <input type="text" class="auth-input" placeholder="e.g., CSE2023001" required>
+                        <span class="input-focus-border"></span>
+                    </div>
+
+                    <button type="button" class="btn btn-primary" style="width: 100%;" onclick="nextStep(2)">Continue →</button>
+                </div>
+
+                <!-- STEP 2: ACADEMIC DETAILS -->
+                <div class="register-step" id="step2">
+                    <h3 class="step-title">Academic Details</h3>
+
+                    <div class="auth-input-group">
+                        <label class="auth-label">
+                            <span class="auth-label-icon">🏛️</span>
+                            Department
+                        </label>
+                        <select class="auth-input" required>
+                            <option value="">Select Department</option>
+                            <option>CSE</option>
+                            <option>AIDS</option>
+                            <option>Cyber</option>
+                            <option>ECE</option>
+                            <option>CIVIL</option>
+                            <option>Mechanical</option>
+                        </select>
+                        <span class="input-focus-border"></span>
+                    </div>
+
+                    <div class="auth-input-group">
+                        <label class="auth-label">
+                            <span class="auth-label-icon">📅</span>
+                            Year of Study
+                        </label>
+                        <select class="auth-input" required>
+                            <option value="">Select Year</option>
+                            <option>1st Year</option>
+                            <option>2nd Year</option>
+                            <option>3rd Year</option>
+                            <option>4th Year</option>
+                        </select>
+                        <span class="input-focus-border"></span>
+                    </div>
+
+                    <div class="auth-input-group">
+                        <label class="auth-label">
+                            <span class="auth-label-icon">📧</span>
+                            College Email
+                        </label>
+                        <input type="email" class="auth-input" placeholder="yourname@college.edu" required>
+                        <span class="input-focus-border"></span>
+                    </div>
+
+                    <div class="step-buttons">
+                        <button type="button" class="btn btn-outline" style="flex: 1;" onclick="prevStep(1)">← Back</button>
+                        <button type="button" class="btn btn-primary" style="flex: 1;" onclick="nextStep(3)">Continue →</button>
+                    </div>
+                </div>
+
+                <!-- STEP 3: ACCOUNT SECURITY -->
+                <div class="register-step" id="step3">
+                    <h3 class="step-title">Account Security</h3>
+
+                    <div class="auth-input-group">
+                        <label class="auth-label">
+                            <span class="auth-label-icon">🔒</span>
+                            Password
+                        </label>
+                        <input type="password" id="regPassword" class="auth-input" placeholder="Create a password" required>
+                        <span class="input-focus-border"></span>
+                        <div class="password-strength">
+                            <div class="strength-bar"></div>
+                            <div class="strength-bar"></div>
+                            <div class="strength-bar"></div>
+                            <div class="strength-bar"></div>
+                        </div>
+                    </div>
+
+                    <div class="auth-input-group">
+                        <label class="auth-label">
+                            <span class="auth-label-icon">✓</span>
+                            Confirm Password
+                        </label>
+                        <input type="password" id="confirmPassword" class="auth-input" placeholder="Confirm your password" required>
+                        <span class="input-focus-border"></span>
+                    </div>
+
+                    <div class="auth-checkbox-group">
+                        <label class="auth-checkbox">
+                            <input type="checkbox" required>
+                            <span class="checkmark"></span>
+                            I confirm that I am a registered student of this college
+                        </label>
+                        
+                        <label class="auth-checkbox">
+                            <input type="checkbox" required>
+                            <span class="checkmark"></span>
+                            I agree to the Terms and Conditions
+                        </label>
+                    </div>
+
+                    <div class="step-buttons">
+                        <button type="button" class="btn btn-outline" style="flex: 1;" onclick="prevStep(2)">← Back</button>
+                        <button type="submit" class="btn btn-primary" style="flex: 1; background: linear-gradient(135deg, #10b981, #059669);">🔐 Create Account</button>
+                    </div>
+                </div>
+            </form>
+
+            <!-- FOOTER -->
+            <div class="auth-footer">
+                <p>Already have an account? <a href="login.html" class="auth-link">Sign In</a></p>
+            </div>
+
+            <!-- DECORATIVE ELEMENTS -->
+            <div class="auth-decoration auth-decoration-1"></div>
+            <div class="auth-decoration auth-decoration-2"></div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <div id="footer-prelogin-container"></div>
+
+    <script src="js/constants.js"></script>
+    <script src="js/helpers.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        fetch('components/navbar-prelogin.html')
+            .then(res => res.text())
+            .then(data => document.getElementById('navbar-container').innerHTML = data);
+        fetch('components/footer-prelogin.html')
+            .then(res => res.text())
+            .then(data => document.getElementById('footer-prelogin-container').innerHTML = data);
+        fetch('components/loader.html')
+            .then(res => res.text())
+            .then(data => document.getElementById('loader-container').innerHTML = data);
+        
+        setTimeout(() => {
+            if (window.FindERAuth) window.FindERAuth.init();
+        }, 100);
+    </script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications | Find-ER</title>
+    <meta name="description" content="Your Find-ER notifications">
+    <link rel="icon" href="../assets/images/logo1.png">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/layout.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/utilities.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link rel="stylesheet" href="../assets/css/notifications.css">
+    <link rel="stylesheet" href="../assets/css/modals.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+<div class="bg-pattern"></div>
+<div id="loader-container"></div>
+<div class="app-container">
+    <div id="sidebar-container"></div>
+    <main class="main-content">
+        <div id="top-header-container"></div>
+        <div class="dashboard-container">
+            <div class="table-container">
+                <div class="table-header">
+                    <h2>🔔 Notifications Center</h2>
+                    <span class="table-badge">Status updates &amp; matches</span>
+                </div>
+
+                <div style="display:flex;gap:8px;margin-top:16px;flex-wrap:wrap">
+                    <button class="btn btn-outline" id="notifTabAll" type="button">All</button>
+                    <button class="btn btn-outline" id="notifTabUnread" type="button">Unread</button>
+                    <button class="btn btn-outline" id="notifTabRead" type="button">Read</button>
+                    <div style="margin-left:auto;display:flex;gap:8px">
+                        <button class="btn btn-primary" id="markAllReadBtn" type="button">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                            Mark all read
+                        </button>
+                        <button class="btn btn-outline" id="clearReadBtn" type="button">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
+                            Clear read
+                        </button>
+                    </div>
+                </div>
+
+                <div id="notificationsList" style="margin-top:16px">
+                    <div class="empty-state">
+                        <div class="empty-icon">🔔</div>
+                        <h3>All caught up!</h3>
+                        <p>No notifications right now. You'll be notified when items are matched or status changes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer-container"></div>
+    </main>
+</div>
+
+<script src="../js/constants.js"></script>
+<script src="../js/helpers.js"></script>
+<script src="../js/storage.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/ui.js"></script>
+<script src="../js/dropdowns.js"></script>
+<script src="../js/modals.js"></script>
+<script src="../js/loaders.js"></script>
+<script src="../js/notifications.js"></script>
+<script src="../js/search.js"></script>
+<script src="../js/reports.js"></script>
+<script src="../js/dashboard.js"></script>
+<script src="../js/app.js"></script>
+<script>
+    Promise.all([
+        fetch('../components/sidebar.html').then(res => res.text()),
+        fetch('../components/top-header.html').then(res => res.text()),
+        fetch('../components/footer.html').then(res => res.text()),
+        fetch('../components/loader.html').then(res => res.text())
+    ]).then(([sidebar, header, footer, loader]) => {
+        document.getElementById('sidebar-container').innerHTML = sidebar;
+        document.getElementById('top-header-container').innerHTML = header;
+        document.getElementById('footer-container').innerHTML = footer;
+        document.getElementById('loader-container').innerHTML = loader;
+        
+        setTimeout(() => {
+            if (window.FindERUI) window.FindERUI.init();
+            if (window.FindERDashboard) window.FindERDashboard.init();
+            if (window.FindERNotifications) window.FindERNotifications.init();
+            if (window.lucide) lucide.createIcons();
+            
+            const loaderEl = document.getElementById('pageLoader');
+            if (loaderEl) {
+                setTimeout(() => {
+                    loaderEl.classList.add('hidden');
+                    setTimeout(() => loaderEl.style.display = 'none', 500);
+                }, 500);
+            }
+        }, 100);
+    });
+</script>
+</body>
+</html>

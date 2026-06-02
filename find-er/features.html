@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features | Find-ER</title>
+    <meta name="description" content="Discover powerful features that make Find-ER the best campus lost & found platform.">
+    <link rel="icon" href="assets/images/logo1.png">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/layout.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/utilities.css">
+    <link rel="stylesheet" href="assets/css/prelogin-components.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <style>
+        body {
+            padding-top: 70px;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding-top: 60px;
+            }
+        }
+
+        /* Unique Hero for Features - Clean Gradient with Stats */
+        .features-hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            padding: 80px 20px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .features-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.1;
+        }
+
+        .features-hero h1 {
+            font-size: 52px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .features-hero p {
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-stats-row {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 50px;
+            position: relative;
+            z-index: 1;
+            flex-wrap: wrap;
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat-number {
+            font-size: 36px;
+            font-weight: 800;
+            color: #60a5fa;
+            display: block;
+        }
+
+        .hero-stat-label {
+            font-size: 13px;
+            opacity: 0.7;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 768px) {
+            .features-hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero-stats-row {
+                gap: 30px;
+            }
+            
+            .hero-stat-number {
+                font-size: 28px;
+            }
+        }
+
+        /* Feature Categories */
+        .feature-category {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .category-tag {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--primary-light);
+            color: var(--primary);
+            border-radius: 40px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        /* Features Grid Enhanced */
+        .features-grid-enhanced {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .feature-card-enhanced {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 32px;
+            text-align: center;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card-enhanced::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .feature-card-enhanced:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-card-enhanced:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
+            border-color: var(--primary-200);
+        }
+
+        .feature-icon-enhanced {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary-200));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 32px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card-enhanced:hover .feature-icon-enhanced {
+            transform: scale(1.1) rotate(5deg);
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+        }
+
+        .feature-title-enhanced {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--dark);
+        }
+
+        .feature-desc-enhanced {
+            font-size: 14px;
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        @media (max-width: 1024px) {
+            .features-grid-enhanced {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .features-grid-enhanced {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Comparison Table */
+        .comparison-section {
+            background: var(--light);
+            padding: 60px 20px;
+        }
+
+        .comparison-table {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .comparison-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 16px 20px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .comparison-table th {
+            background: var(--primary);
+            color: white;
+            font-weight: 700;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table td:first-child {
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .check-icon {
+            color: #10b981;
+            font-weight: 700;
+        }
+
+        .cross-icon {
+            color: #ef4444;
+        }
+
+        @media (max-width: 768px) {
+            .comparison-table th,
+            .comparison-table td {
+                padding: 12px;
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="loader-container"></div>
+
+    <div class="bg-circle circle-1"></div>
+    <div class="bg-circle circle-2"></div>
+    <div class="bg-pattern"></div>
+
+    <div id="navbar-container"></div>
+
+    <main>
+
+        <!-- UNIQUE FEATURES HERO - NO FLOATING CARDS -->
+        <div class="features-hero">
+            <h1>Everything You <span style="color: #60a5fa;">Need</span></h1>
+            <p>Find-ER comes packed with features designed to make item recovery fast, easy, and reliable for everyone on campus.</p>
+            <div class="hero-stats-row">
+                <div class="hero-stat">
+                    <span class="hero-stat-number">12+</span>
+                    <span class="hero-stat-label">Powerful Features</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="hero-stat-number">100%</span>
+                    <span class="hero-stat-label">Free to Use</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="hero-stat-number">24/7</span>
+                    <span class="hero-stat-label">Availability</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- FEATURES GRID -->
+        <div class="features-grid-enhanced">
+            <div class="feature-card-enhanced" data-reveal>
+                <div class="feature-icon-enhanced">🔍</div>
+                <h3 class="feature-title-enhanced">Smart Search & Filter</h3>
+                <p class="feature-desc-enhanced">Filter items by category, location, date, and status. Find what you're looking for in seconds.</p>
+            </div>
+
+            <div class="feature-card-enhanced" data-reveal>
+                <div class="feature-icon-enhanced">📸</div>
+                <h3 class="feature-title-enhanced">Photo Upload</h3>
+                <p class="feature-desc-enhanced">Upload clear photos of your lost or found items. Images are automatically optimized.</p>
+            </div>
+
+            <div class="feature-card-enhanced" data-reveal>
+                <div class="feature-icon-enhanced">🔔</div>
+                <h3 class="feature-title-enhanced">Real-Time Notifications</h3>
+                <p class="feature-desc-enhanced">Get instant alerts when your item is matched or status changes. Never miss an update.</p>
+            </div>
+
+            <div class="feature-card-enhanced" data-reveal>
+                <div class="feature-icon-enhanced">📍</div>
+                <h3 class="feature-title-enhanced">Location Tracking</h3>
+                <p class="feature-desc-enhanced">Report by specific campus locations. Find items near you faster.</p>
+            </div>
+
+            <div class="feature-card-enhanced" data-reveal>
+                <div class="feature-icon-enhanced">👤</div>
+                <h3 class="feature-title-enhanced">User Profiles</h3>
+                <p class="feature-desc-enhanced">Manage all your reports, view recovery history, and track your success rate.</p>
+            </div>
+
+            <div class="feature-card-enhanced" data-reveal>
+                <div class="feature-icon-enhanced">🛡️</div>
+                <h3 class="feature-title-enhanced">Admin Verification</h3>
+                <p class="feature-desc-enhanced">All reports are verified by campus admins to ensure safety and prevent fraud.</p>
+            </div>
+
+            <div class="feature-card-enhanced" data-reveal>
+                <div class="feature-icon-enhanced">💾</div>
+                <h3 class="feature-title-enhanced">Auto-Save Drafts</h3>
+                <p class="feature-desc-enhanced">Never lose your progress. Your report drafts are automatically saved as you type.</p>
+            </div>
+
+            <div class="feature-card-enhanced" data-reveal>
+                <div class="feature-icon-enhanced">📥</div>
+                <h3 class="feature-title-enhanced">CSV Export</h3>
+                <p class="feature-desc-enhanced">Export all reports to CSV for data analysis and record keeping (Admin only).</p>
+            </div>
+
+            <div class="feature-card-enhanced" data-reveal>
+                <div class="feature-icon-enhanced">🔐</div>
+                <h3 class="feature-title-enhanced">Secure Authentication</h3>
+                <p class="feature-desc-enhanced">SHA-256 password hashing protects your account and personal information.</p>
+            </div>
+
+            <div class="feature-card-enhanced" data-reveal>
+                <div class="feature-icon-enhanced">📱</div>
+                <h3 class="feature-title-enhanced">Fully Responsive</h3>
+                <p class="feature-desc-enhanced">Works perfectly on desktop, tablet, and mobile devices. Report on the go!</p>
+            </div>
+
+            <div class="feature-card-enhanced" data-reveal>
+                <div class="feature-icon-enhanced">⚡</div>
+                <h3 class="feature-title-enhanced">Lightning Fast</h3>
+                <p class="feature-desc-enhanced">Optimized for speed on campus networks. Pages load in milliseconds.</p>
+            </div>
+
+            <div class="feature-card-enhanced" data-reveal>
+                <div class="feature-icon-enhanced">📊</div>
+                <h3 class="feature-title-enhanced">Admin Dashboard</h3>
+                <p class="feature-desc-enhanced">Complete control panel for managing items, users, and system data.</p>
+            </div>
+        </div>
+
+        <!-- COMPARISON TABLE -->
+        <div class="comparison-section">
+            <div class="section-header">
+                <span class="section-badge">Why Choose Us</span>
+                <h2 class="section-title">Find-ER vs <span class="gradient-text">Traditional Methods</span></h2>
+                <p class="section-description">See how we're better than notice boards and manual tracking</p>
+            </div>
+
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Find-ER</th>
+                            <th>Notice Board</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Real-time updates</td><td class="check-icon">✅ Yes</td><td class="cross-icon">❌ No</td></tr>
+                        <tr><td>Instant notifications</td><td class="check-icon">✅ Yes</td><td class="cross-icon">❌ No</td></tr>
+                        <tr><td>Photo attachments</td><td class="check-icon">✅ Yes</td><td class="cross-icon">❌ No</td></tr>
+                        <tr><td>Search & filter</td><td class="check-icon">✅ Yes</td><td class="cross-icon">❌ No</td></tr>
+                        <tr><td>24/7 availability</td><td class="check-icon">✅ Yes</td><td class="cross-icon">❌ Limited</td></tr>
+                        <tr><td>Status tracking</td><td class="check-icon">✅ Yes</td><td class="cross-icon">❌ No</td></tr>
+                        <tr><td>Admin verification</td><td class="check-icon">✅ Yes</td><td class="cross-icon">❌ No</td></tr>
+                        <tr><td>Mobile friendly</td><td class="check-icon">✅ Yes</td><td class="cross-icon">❌ No</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- CTA SECTION -->
+        <section class="cta-section">
+            <div class="cta-container">
+                <h2 class="cta-title">Ready to experience the difference?</h2>
+                <p class="cta-description">Join thousands of students who've already switched to Find-ER</p>
+                <div class="cta-actions">
+                    <a href="register.html" class="btn btn-primary btn-large">Get Started Free →</a>
+                    <a href="how-it-works.html" class="btn btn-outline btn-large">Learn More</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="footer-prelogin-container"></div>
+
+    <script src="js/constants.js"></script>
+    <script src="js/helpers.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        fetch('components/navbar-prelogin.html')
+            .then(res => res.text())
+            .then(data => document.getElementById('navbar-container').innerHTML = data);
+        fetch('components/footer-prelogin.html')
+            .then(res => res.text())
+            .then(data => document.getElementById('footer-prelogin-container').innerHTML = data);
+        fetch('components/loader.html')
+            .then(res => res.text())
+            .then(data => document.getElementById('loader-container').innerHTML = data);
+    </script>
+</body>
+</html>

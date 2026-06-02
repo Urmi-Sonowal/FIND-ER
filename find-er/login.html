@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login – Find-ER</title>
+    <link rel="icon" href="assets/images/logo1.png">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/layout.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/utilities.css">
+    <link rel="stylesheet" href="assets/css/auth.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+
+    <div id="loader-container"></div>
+
+    <!-- DECORATIVE BACKGROUND ELEMENTS -->
+    <div class="bg-circle circle-1"></div>
+    <div class="bg-circle circle-2"></div>
+    <div class="bg-circle circle-3"></div>
+    <div class="bg-pattern"></div>
+
+    <!-- NAVIGATION -->
+    <div id="navbar-container"></div>
+
+    <main class="auth-main">
+        <!-- LOGIN CARD -->
+        <div class="auth-card">
+            
+            <!-- DECORATIVE HEADER -->
+            <div class="auth-header">
+                <div class="auth-icon-wrapper">
+                    <div class="auth-icon">🔐</div>
+                </div>
+                <h1 class="auth-title">Welcome Back</h1>
+                <p class="auth-subtitle">Sign in to access the campus lost & found portal</p>
+            </div>
+
+            <!-- LOGIN FORM -->
+            <form class="auth-form" id="loginForm">
+                
+                <div class="auth-input-group">
+                    <label class="auth-label">
+                        <span class="auth-label-icon">👤</span>
+                        Full Name / Admin ID
+                    </label>
+                    <input type="text" 
+                           id="userId"
+                           name="userId"
+                           class="auth-input"
+                           placeholder="Enter your name or ID"
+                           required>
+                    <span class="input-focus-border"></span>
+                </div>
+
+                <div class="auth-input-group">
+                    <label class="auth-label">
+                        <span class="auth-label-icon">🔒</span>
+                        Password
+                    </label>
+                    <input type="password" 
+                           id="password"
+                           name="password" 
+                           class="auth-input"
+                           placeholder="Enter your password"
+                           required>
+                    <span class="input-focus-border"></span>
+                    <button type="button" class="password-toggle">👁️</button>
+                </div>
+
+                <div class="auth-options">
+                    <label class="auth-checkbox">
+                        <input type="checkbox" checked>
+                        <span class="checkmark"></span>
+                        Remember me
+                    </label>
+                    <a href="#" id="forgotPasswordLink" class="auth-forgot-link">Forgot Password?</a>
+                </div>
+
+                <div class="auth-divider">
+                    <span>Login as</span>
+                </div>
+
+                <div class="auth-role-buttons">
+                    <button type="button" class="auth-role-btn student-role">
+                        <span class="role-icon">🎓</span>
+                        <span class="role-text">
+                            <strong>Student</strong>
+                            <small>Access your dashboard</small>
+                        </span>
+                    </button>
+
+                    <button type="button" class="auth-role-btn admin-role">
+                        <span class="role-icon">👨‍💼</span>
+                        <span class="role-text">
+                            <strong>Administrator</strong>
+                            <small>Manage the portal</small>
+                        </span>
+                    </button>
+                </div>
+            </form>
+
+            <!-- FOOTER -->
+            <div class="auth-footer">
+                <p>Don't have an account? <a href="register.html" class="auth-link">Create Account</a></p>
+                <p class="auth-note">
+                    <span class="note-icon">ℹ️</span>
+                    Demo login - Student ID: STU001, Password: student123 | Admin ID: admin, Password: Admin@Finder2025
+                </p>
+            </div>
+
+            <!-- DECORATIVE ELEMENTS -->
+            <div class="auth-decoration auth-decoration-1"></div>
+            <div class="auth-decoration auth-decoration-2"></div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <div id="footer-prelogin-container"></div>
+
+    <script src="js/constants.js"></script>
+    <script src="js/helpers.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        fetch('components/navbar-prelogin.html')
+            .then(res => res.text())
+            .then(data => document.getElementById('navbar-container').innerHTML = data);
+        fetch('components/footer-prelogin.html')
+            .then(res => res.text())
+            .then(data => document.getElementById('footer-prelogin-container').innerHTML = data);
+        fetch('components/loader.html')
+            .then(res => res.text())
+            .then(data => document.getElementById('loader-container').innerHTML = data);
+        
+        // Initialize auth after components load
+        setTimeout(() => {
+            if (window.FindERAuth) window.FindERAuth.init();
+        }, 100);
+    </script>
+</body>
+</html>

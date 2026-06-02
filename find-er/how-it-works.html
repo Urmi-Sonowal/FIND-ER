@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How It Works | Find-ER</title>
+    <meta name="description" content="Learn how Find-ER helps you recover lost items on campus in 4 simple steps.">
+    <link rel="icon" href="assets/images/logo1.png">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/layout.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/utilities.css">
+    <link rel="stylesheet" href="assets/css/prelogin-components.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <style>
+        body {
+            padding-top: 70px;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding-top: 60px;
+            }
+        }
+
+        /* UNIQUE HERO - Steps Preview */
+        .how-it-works-hero {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .how-it-works-hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+
+        .how-it-works-hero p {
+            font-size: 18px;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .steps-preview {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+
+        .preview-step {
+            text-align: center;
+            width: 160px;
+        }
+
+        .preview-step-circle {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 28px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .preview-step:hover .preview-step-circle {
+            transform: scale(1.1);
+            background: var(--primary);
+            color: white;
+        }
+
+        .preview-step h4 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+
+        .preview-step p {
+            font-size: 11px;
+            color: var(--gray);
+        }
+
+        @media (max-width: 768px) {
+            .how-it-works-hero h1 {
+                font-size: 32px;
+            }
+            
+            .steps-preview {
+                gap: 15px;
+            }
+            
+            .preview-step {
+                width: 130px;
+            }
+        }
+
+        /* Process Timeline */
+        .process-timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 60px auto;
+            padding: 20px;
+        }
+
+        .timeline-step {
+            display: flex;
+            margin-bottom: 50px;
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-step:hover {
+            transform: translateX(10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .step-number-badge {
+            width: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: 800;
+            color: white;
+        }
+
+        .step-content {
+            flex: 1;
+            padding: 25px 30px;
+        }
+
+        .step-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .step-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .step-desc {
+            color: var(--gray);
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .step-tip {
+            display: inline-block;
+            background: var(--primary-light);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .timeline-step {
+                flex-direction: column;
+            }
+            
+            .step-number-badge {
+                width: 100%;
+                padding: 15px;
+            }
+            
+            .step-content {
+                padding: 20px;
+            }
+            
+            .step-title {
+                font-size: 18px;
+            }
+        }
+
+        /* Tips Grid */
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .tip-card {
+            text-align: center;
+            padding: 30px;
+            background: var(--white);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+        }
+
+        .tip-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary);
+        }
+
+        .tip-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary-200));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 32px;
+            transition: all 0.3s ease;
+        }
+
+        .tip-card:hover .tip-icon {
+            transform: scale(1.1) rotate(10deg);
+            background: var(--primary);
+            color: white;
+        }
+
+        .tip-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .tip-card p {
+            font-size: 14px;
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .tips-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background: var(--light);
+            padding: 60px 20px;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--white);
+            border-radius: 16px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .faq-question {
+            padding: 18px 22px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--dark);
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: var(--primary-light);
+        }
+
+        .faq-chevron {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.open .faq-chevron {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            padding: 0 22px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 200px;
+            padding: 0 22px 18px 22px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="loader-container"></div>
+
+    <div class="bg-circle circle-1"></div>
+    <div class="bg-circle circle-2"></div>
+    <div class="bg-pattern"></div>
+
+    <div id="navbar-container"></div>
+
+    <main>
+
+        <!-- UNIQUE HERO - Step Preview Instead of Floating Cards -->
+        <div class="how-it-works-hero">
+            <h1>How <span style="color: var(--primary);">Find-ER</span> Works</h1>
+            <p>Recovering your lost items is just 4 simple steps away</p>
+            
+            <div class="steps-preview">
+                <div class="preview-step">
+                    <div class="preview-step-circle">📝</div>
+                    <h4>Step 1</h4>
+                    <p>Report Item</p>
+                </div>
+                <div class="preview-step">
+                    <div class="preview-step-circle">✓</div>
+                    <h4>Step 2</h4>
+                    <p>Verification</p>
+                </div>
+                <div class="preview-step">
+                    <div class="preview-step-circle">🔄</div>
+                    <h4>Step 3</h4>
+                    <p>Smart Match</p>
+                </div>
+                <div class="preview-step">
+                    <div class="preview-step-circle">🎉</div>
+                    <h4>Step 4</h4>
+                    <p>Recover!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- DETAILED TIMELINE -->
+        <div class="process-timeline">
+            <div class="timeline-step" data-reveal>
+                <div class="step-number-badge">01</div>
+                <div class="step-content">
+                    <div class="step-icon">📝</div>
+                    <h3 class="step-title">Report Your Item</h3>
+                    <p class="step-desc">Fill out a simple form with details about your lost or found item. Include the item name, category, location, date, and a clear photo if available. The more details you provide, the better chance of matching!</p>
+                    <span class="step-tip">💡 Tip: Upload a clear photo for faster matching</span>
+                </div>
+            </div>
+
+            <div class="timeline-step" data-reveal>
+                <div class="step-number-badge">02</div>
+                <div class="step-content">
+                    <div class="step-icon">✓</div>
+                    <h3 class="step-title">Verification Process</h3>
+                    <p class="step-desc">Our campus admin team reviews your report to ensure accuracy and prevent false claims. This usually takes less than 24 hours. Once verified, your report becomes visible to others.</p>
+                    <span class="step-tip">💡 Tip: Check your notifications for status updates</span>
+                </div>
+            </div>
+
+            <div class="timeline-step" data-reveal>
+                <div class="step-number-badge">03</div>
+                <div class="step-content">
+                    <div class="step-icon">🔄</div>
+                    <h3 class="step-title">Smart Matching</h3>
+                    <p class="step-desc">Our intelligent system automatically matches lost items with found reports based on category, location, description, and timing. You'll receive instant notifications when a potential match is found!</p>
+                    <span class="step-tip">💡 Tip: Enable notifications to never miss a match</span>
+                </div>
+            </div>
+
+            <div class="timeline-step" data-reveal>
+                <div class="step-number-badge">04</div>
+                <div class="step-content">
+                    <div class="step-icon">🎉</div>
+                    <h3 class="step-title">Recover Your Item</h3>
+                    <p class="step-desc">Once your item is ready for pickup, visit the Lost & Found office with your College ID. Our staff will verify your identity and hand over your recovered item. It's that simple!</p>
+                    <span class="step-tip">💡 Tip: Bring your College ID and any proof of ownership</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- PRO TIPS SECTION -->
+        <section class="features" style="background: var(--light);">
+            <div class="section-header">
+                <span class="section-badge">Pro Tips</span>
+                <h2 class="section-title">Tips for <span class="gradient-text">Faster Recovery</span></h2>
+                <p class="section-description">Follow these simple guidelines to increase your chances</p>
+            </div>
+
+            <div class="tips-grid">
+                <div class="tip-card" data-reveal>
+                    <div class="tip-icon">📸</div>
+                    <h3>Upload Clear Photos</h3>
+                    <p>High-quality images help identify items faster. Take photos from multiple angles showing unique marks or features.</p>
+                </div>
+                <div class="tip-card" data-reveal>
+                    <div class="tip-icon">📍</div>
+                    <h3>Be Specific About Location</h3>
+                    <p>Mention exact building name, floor, room number, or nearby landmarks for quicker matching.</p>
+                </div>
+                <div class="tip-card" data-reveal>
+                    <div class="tip-icon">⏰</div>
+                    <h3>Report Immediately</h3>
+                    <p>The sooner you report, the better chance of recovery. Don't wait - report as soon as you realize it's missing.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ SECTION -->
+        <div class="faq-section">
+            <div class="section-header">
+                <span class="section-badge">FAQ</span>
+                <h2 class="section-title">Common <span class="gradient-text">Questions</span></h2>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>❓ How long does it take to get a match?</span>
+                        <span class="faq-chevron">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Match times vary depending on the item. ID cards and electronics are often matched within 24-48 hours, while other items may take 3-5 days.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>❓ Can I report on behalf of someone else?</span>
+                        <span class="faq-chevron">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! You can report a found item on behalf of someone. For lost items, the owner should ideally report themselves.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>❓ Is there a fee for using Find-ER?</span>
+                        <span class="faq-chevron">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No! Find-ER is completely free for all students and staff. It's a campus service provided by the college.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <div id="footer-prelogin-container"></div>
+
+    <script src="js/constants.js"></script>
+    <script src="js/helpers.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        fetch('components/navbar-prelogin.html')
+            .then(res => res.text())
+            .then(data => document.getElementById('navbar-container').innerHTML = data);
+        fetch('components/footer-prelogin.html')
+            .then(res => res.text())
+            .then(data => document.getElementById('footer-prelogin-container').innerHTML = data);
+        fetch('components/loader.html')
+            .then(res => res.text())
+            .then(data => document.getElementById('loader-container').innerHTML = data);
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-item').forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                item.classList.toggle('open');
+            });
+        });
+    </script>
+</body>
+</html>

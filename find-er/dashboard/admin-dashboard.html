@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Find-ER</title>
+    <link rel="icon" href="../assets/images/logo1.png">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/layout.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/utilities.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link rel="stylesheet" href="../assets/css/notifications.css">
+    <link rel="stylesheet" href="../assets/css/modals.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <style>
+    /* Force remove any extra spacing */
+    html, body {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    .main-content {
+        padding-top: 0 !important;
+        margin-top: 0 !important;
+    }
+    .top-header {
+        margin-top: 0 !important;
+        top: 0 !important;
+    }
+</style>
+</head>
+<body class="find-er-app">
+    <div class="bg-pattern" aria-hidden="true"></div>
+    <div id="loader-container"></div>
+    <div class="app-container">
+        <div id="sidebar-container"></div>
+        <main class="main-content">
+            <div id="top-header-container"></div>
+            <div class="page-shell" id="pageShellContent">
+                <div class="dashboard-container">
+                    <div class="welcome-card admin-welcome" style="background:linear-gradient(135deg,#991b1b,#ef4444,#f97316);" data-reveal>
+                        <div class="welcome-content">
+                            <h1>Admin Dashboard</h1>
+                            <p>Manage verification, matching, and campus inventory.</p>
+                        </div>
+                        <div class="welcome-badge">
+                            <span class="badge-label">Status</span>
+                            <span class="badge-value">Live</span>
+                        </div>
+                    </div>
+
+                    <div id="adminControlBar" class="admin-control-bar">
+                        <span class="admin-badge">ADMIN MODE</span>
+                        <div style="display:flex;flex-wrap:wrap;gap:10px;">
+                            <button type="button" class="admin-action-btn view-all" id="adminBarViewAll">View all</button>
+                            <button type="button" class="admin-action-btn stats" id="adminBarStats">Stats</button>
+                            <button type="button" class="admin-action-btn export" id="exportCsvBtn">Export CSV</button>
+                            <button type="button" class="admin-action-btn clear" id="adminBarClear">Clear data</button>
+                        </div>
+                    </div>
+
+                    <div class="stats-grid">
+                        <div class="stat-card" data-reveal>
+                            <div class="stat-icon">📋</div>
+                            <div class="admin-stat-content stat-content">
+                                <h3 id="activeReports" data-count-up="0">0</h3>
+                                <p>Active Reports</p>
+                            </div>
+                        </div>
+                        <div class="stat-card" data-reveal>
+                            <div class="stat-icon">✅</div>
+                            <div class="admin-stat-content stat-content">
+                                <h3 id="recoveredItems" data-count-up="0">0</h3>
+                                <p>Recovered Items</p>
+                            </div>
+                        </div>
+                        <div class="stat-card" data-reveal>
+                            <div class="stat-icon">⏳</div>
+                            <div class="admin-stat-content stat-content">
+                                <h3 id="pendingVerification" data-count-up="0">0</h3>
+                                <p>Pending Verification</p>
+                            </div>
+                        </div>
+                        <div class="stat-card" data-reveal>
+                            <div class="stat-icon">📊</div>
+                            <div class="admin-stat-content stat-content">
+                                <h3 id="successRate" data-count-up="0" data-count-suffix="%">0%</h3>
+                                <p>Success Rate</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2 class="section-title-dash"><span>⚡</span> Quick Actions</h2>
+                    <div class="actions-grid admin-actions-grid">
+                        <a class="action-card" href="lost.html" data-reveal>
+                            <div class="action-icon">🔍</div>
+                            <h3>Verify Lost</h3>
+                            <p>Open lost listings.</p>
+                        </a>
+                        <a class="action-card" href="found.html" data-reveal>
+                            <div class="action-icon">📦</div>
+                            <h3>Verify Found</h3>
+                            <p>Review found items.</p>
+                        </a>
+                        <button type="button" class="action-card" id="exportCsvCard" data-reveal style="border:none;text-align:left;font:inherit;cursor:pointer;color:inherit;">
+                            <div class="action-icon">⬇️</div>
+                            <h3>Export</h3>
+                            <p>Download CSV.</p>
+                        </button>
+                        <button type="button" class="action-card" id="systemHealthBtn" data-reveal style="border:none;text-align:left;font:inherit;cursor:pointer;color:inherit;">
+                            <div class="action-icon">💓</div>
+                            <h3>System Health</h3>
+                            <p>Storage overview.</p>
+                        </button>
+                    </div>
+
+                    <h2 class="section-title-dash">All items</h2>
+                    <div class="table-container">
+                        <div class="table-header">
+                            <h2 style="margin:0;">Inventory</h2>
+                            <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
+                                <input type="search" id="adminTableSearch" placeholder="Search table…" class="form-control" style="max-width:240px;">
+                                <select id="adminCategoryFilter" class="form-control" style="max-width:180px;">
+                                    <option value="all">All categories</option>
+                                    <option>ID Card</option>
+                                    <option>Electronics</option>
+                                    <option>Books</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <table class="activity-table admin-dashboard-table">
+                            <thead>
+                                <tr>
+                                    <th>Item</th>
+                                    <th>Type</th>
+                                    <th>Category</th>
+                                    <th>Date</th>
+                                    <th>Location</th>
+                                    <th>Status</th>
+                                    <th>Reporter</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adminItemsTableBody"></tbody>
+                        </table>
+                    </div>
+
+                    <h2 class="section-title-dash" style="margin-top:32px;">System Overview</h2>
+                    <div class="stats-grid">
+                        <div class="stat-card" data-reveal>
+                            <div class="stat-content"><h3 id="totalUsers">0</h3><p>Total Users</p></div>
+                        </div>
+                        <div class="stat-card" data-reveal>
+                            <div class="stat-content"><h3 id="totalItemsHint">0</h3><p>Total Items</p></div>
+                        </div>
+                        <div class="stat-card" data-reveal>
+                            <div class="stat-content"><h3 id="matchRate">—</h3><p>Match Rate</p></div>
+                        </div>
+                        <div class="stat-card" data-reveal>
+                            <div class="stat-content"><h3 id="avgResponse">—</h3><p>Avg Response</p></div>
+                        </div>
+                    </div>
+
+                    <h2 class="section-title-dash" style="margin-top:24px;">Recent activity</h2>
+                    <div class="table-container">
+                        <table class="activity-table">
+                            <thead>
+                                <tr><th>Item</th><th>Type</th><th>Date</th><th>Location</th><th>Status</th><th>Reporter</th></tr>
+                            </thead>
+                            <tbody id="adminActivityTable"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <button type="button" id="backToTopBtn" class="back-to-top"><i data-lucide="chevron-up"></i></button>
+            <div id="footer-container"></div>
+        </main>
+    </div>
+
+    <script src="../js/constants.js"></script>
+    <script src="../js/helpers.js"></script>
+    <script src="../js/storage.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/ui.js"></script>
+    <script src="../js/dropdowns.js"></script>
+    <script src="../js/modals.js"></script>
+    <script src="../js/loaders.js"></script>
+    <script src="../js/notifications.js"></script>
+    <script src="../js/search.js"></script>
+    <script src="../js/reports.js"></script>
+    <script src="../js/dashboard.js"></script>
+    <script src="../js/app.js"></script>
+    <script>
+        Promise.all([
+            fetch('../components/sidebar.html').then(res => res.text()),
+            fetch('../components/top-header.html').then(res => res.text()),
+            fetch('../components/footer.html').then(res => res.text()),
+            fetch('../components/loader.html').then(res => res.text())
+        ]).then(([sidebar, header, footer, loader]) => {
+            document.getElementById('sidebar-container').innerHTML = sidebar;
+            document.getElementById('top-header-container').innerHTML = header;
+            document.getElementById('footer-container').innerHTML = footer;
+            document.getElementById('loader-container').innerHTML = loader;
+            
+            setTimeout(() => {
+                if (window.FindERUI) window.FindERUI.init();
+                if (window.FindERDashboard) window.FindERDashboard.init();
+                if (window.FindERNotifications) window.FindERNotifications.init();
+                if (window.FindERSearch) window.FindERSearch.init();
+                if (window.lucide) lucide.createIcons();
+                
+                const loaderEl = document.getElementById('pageLoader');
+                if (loaderEl) {
+                    setTimeout(() => {
+                        loaderEl.classList.add('hidden');
+                        setTimeout(() => loaderEl.style.display = 'none', 500);
+                    }, 500);
+                }
+            }, 100);
+        });
+    </script>
+</body>
+</html>

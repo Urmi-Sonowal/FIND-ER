@@ -1,0 +1,81 @@
+<aside class="sidebar collapsed" aria-label="Main navigation">
+    <div class="sidebar-header">
+        <div class="sidebar-logo">
+            <div class="sidebar-logo-mark">
+                <i data-lucide="search-check"></i>
+                <!-- Inline SVG fallback so logo shows even if lucide isn't initialized -->
+                <svg class="sidebar-logo-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M15 9l-1.5 1.5L13 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <span class="sidebar-logo-text">Find-ER</span>
+        </div>
+    </div>
+    <div class="user-profile">
+        <div class="user-avatar" id="sidebarAvatar"></div>
+        <div class="user-info">
+            <div class="user-name" id="sidebarUserName">Student</div>
+            <div class="user-id" id="sidebarUserId">ID</div>
+            <div class="user-role-badge" id="sidebarUserRole"><span class="role-student">STUDENT</span></div>
+        </div>
+    </div>
+    <nav class="sidebar-nav">
+        <div class="nav-section">
+            <div class="nav-section-title">MAIN</div>
+            <a href="student-dashboard.html" class="nav-item" id="navDashboard">
+                <i data-lucide="layout-dashboard" class="nav-icon"></i>
+                <span class="nav-text">Dashboard</span>
+            </a>
+            <a href="profile.html" class="nav-item" id="navProfile">
+                <i data-lucide="user" class="nav-icon"></i>
+                <span class="nav-text">Profile</span>
+            </a>
+            <a href="lost.html" class="nav-item" id="navLost">
+                <i data-lucide="search" class="nav-icon"></i>
+                <span class="nav-text">Lost Items</span>
+                <span class="nav-badge" id="lostBadge">0</span>
+            </a>
+            <a href="found.html" class="nav-item" id="navFound">
+                <i data-lucide="check-circle" class="nav-icon"></i>
+                <span class="nav-text">Found Items</span>
+                <span class="nav-badge" id="foundBadge">0</span>
+            </a>
+            <a href="report.html" class="nav-item" id="navReport">
+                <i data-lucide="file-plus" class="nav-icon"></i>
+                <span class="nav-text">Report Item</span>
+            </a>
+            <a href="notifications.html" class="nav-item" id="navNotifications">
+                <i data-lucide="bell" class="nav-icon"></i>
+                <span class="nav-text">Notifications</span>
+                <span class="nav-badge notification-badge" id="sidebarNotifBadge"></span>
+            </a>
+        </div>
+        <div class="nav-section">
+            <div class="nav-section-title">SUPPORT</div>
+            <a href="../instructions.html" class="nav-item" id="navInstructions">
+                <i data-lucide="book-open" class="nav-icon"></i>
+                <span class="nav-text">Instructions</span>
+            </a>
+            <a href="../faq.html" class="nav-item" id="navFaq">
+                <i data-lucide="help-circle" class="nav-icon"></i>
+                <span class="nav-text">FAQ</span>
+            </a>
+            <a href="../contact.html" class="nav-item" id="navContact">
+                <i data-lucide="phone" class="nav-icon"></i>
+                <span class="nav-text">Contact</span>
+            </a>
+            <a href="../about.html" class="nav-item" id="navAbout">
+                <i data-lucide="info" class="nav-icon"></i>
+                <span class="nav-text">About</span>
+            </a>
+        </div>
+    </nav>
+    <div class="sidebar-footer">
+        <a href="#" class="logout-btn" id="sidebarLogoutBtn">
+            <i data-lucide="log-out" class="nav-icon"></i>
+            <span class="nav-text">Logout</span>
+        </a>
+    </div>
+</aside>

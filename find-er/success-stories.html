@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success Stories | Find-ER</title>
+    <meta name="description" content="Read inspiring success stories of students who recovered their lost items through Find-ER.">
+    <link rel="icon" href="assets/images/logo1.png">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/layout.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/utilities.css">
+    <link rel="stylesheet" href="assets/css/prelogin-components.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <style>
+        body {
+            padding-top: 70px;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding-top: 60px;
+            }
+        }
+
+        /* UNIQUE HERO - Quote / Testimonial Focus */
+        .stories-hero {
+            background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+            padding: 80px 20px;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .stories-hero::before {
+            content: '"';
+            position: absolute;
+            bottom: 20px;
+            right: 40px;
+            font-size: 200px;
+            opacity: 0.1;
+            font-family: Georgia, serif;
+        }
+
+        .stories-hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .hero-quote {
+            max-width: 700px;
+            margin: 30px auto 0;
+            font-size: 20px;
+            font-style: italic;
+            line-height: 1.5;
+            opacity: 0.95;
+        }
+
+        .hero-quote-author {
+            margin-top: 15px;
+            font-size: 14px;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 768px) {
+            .stories-hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero-quote {
+                font-size: 16px;
+            }
+        }
+
+        /* Stats Banner */
+        .stats-banner-custom {
+            background: white;
+            padding: 50px 20px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .stats-grid-custom {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .stat-item-custom {
+            text-align: center;
+        }
+
+        .stat-number-custom {
+            font-size: 42px;
+            font-weight: 800;
+            color: var(--primary);
+            display: block;
+            line-height: 1.2;
+        }
+
+        .stat-label-custom {
+            font-size: 13px;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 768px) {
+            .stats-grid-custom {
+                gap: 30px;
+            }
+            
+            .stat-number-custom {
+                font-size: 32px;
+            }
+        }
+
+        /* Story Cards */
+        .story-card {
+            background: var(--white);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            margin-bottom: 30px;
+            display: flex;
+            border: 1px solid var(--border);
+        }
+
+        .story-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            border-color: var(--primary-200);
+        }
+
+        .story-icon-col {
+            width: 100px;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary-200));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+        }
+
+        .story-content {
+            flex: 1;
+            padding: 24px 30px;
+        }
+
+        .story-quote {
+            font-size: 18px;
+            line-height: 1.6;
+            color: var(--dark);
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .story-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #dcfce7;
+            color: #16a34a;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .story-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border);
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .author-info h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: var(--dark);
+        }
+
+        .author-info p {
+            font-size: 12px;
+            color: var(--gray);
+        }
+
+        @media (max-width: 768px) {
+            .story-card {
+                flex-direction: column;
+            }
+            
+            .story-icon-col {
+                width: 100%;
+                padding: 30px;
+            }
+            
+            .story-content {
+                padding: 20px;
+            }
+            
+            .story-quote {
+                font-size: 16px;
+            }
+        }
+
+        /* Testimonial Grid */
+        .testimonial-grid-custom {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .testimonial-card-custom {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+        }
+
+        .testimonial-card-custom:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary);
+        }
+
+        .testimonial-avatar {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 28px;
+            color: white;
+        }
+
+        .testimonial-rating {
+            color: #fbbf24;
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        .testimonial-text-custom {
+            font-size: 14px;
+            line-height: 1.7;
+            color: var(--gray);
+            margin: 15px 0;
+        }
+
+        @media (max-width: 1024px) {
+            .testimonial-grid-custom {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .testimonial-grid-custom {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Submit Story Section */
+        .submit-story {
+            background: linear-gradient(135deg, #f0f9ff, #e6f4fa);
+            padding: 60px 20px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .submit-story h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .submit-story p {
+            color: var(--gray);
+            margin-bottom: 25px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="loader-container"></div>
+
+    <div class="bg-circle circle-1"></div>
+    <div class="bg-circle circle-2"></div>
+    <div class="bg-pattern"></div>
+
+    <div id="navbar-container"></div>
+
+    <main>
+
+        <!-- UNIQUE HERO - Inspiring Quote Instead of Floating Cards -->
+        <div class="stories-hero">
+            <h1>Success <span style="color: #a78bfa;">Stories</span></h1>
+            <div class="hero-quote">
+                "Find-ER helped me get back my lost ID card within hours. 
+                The real-time notification system is a game changer!"
+            </div>
+            <div class="hero-quote-author">
+                — Rahul Sharma, CSE 3rd Year
+            </div>
+        </div>
+
+        <!-- STATS BANNER -->
+        <div class="stats-banner-custom">
+            <div class="stats-grid-custom">
+                <div class="stat-item-custom">
+                    <span class="stat-number-custom" data-count="542">0</span>
+                    <span class="stat-label-custom">Items Recovered</span>
+                </div>
+                <div class="stat-item-custom">
+                    <span class="stat-number-custom" data-count="1280">0</span>
+                    <span class="stat-label-custom">Active Users</span>
+                </div>
+                <div class="stat-item-custom">
+                    <span class="stat-number-custom" data-count="96">0</span>
+                    <span class="stat-label-custom">Success Rate (%)</span>
+                </div>
+                <div class="stat-item-custom">
+                    <span class="stat-number-custom" data-count="24">0</span>
+                    <span class="stat-label-custom">Avg Recovery (hrs)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- FEATURED STORIES -->
+        <section class="features" style="background: var(--light);">
+            <div class="section-header">
+                <span class="section-badge">Featured</span>
+                <h2 class="section-title">Recent <span class="gradient-text">Success Stories</span></h2>
+                <p class="section-description">Real recoveries from our campus community</p>
+            </div>
+
+            <div style="max-width: 1000px; margin: 0 auto; padding: 20px;">
+                <div class="story-card" data-reveal>
+                    <div class="story-icon-col">
+                        <span>🪪</span>
+                    </div>
+                    <div class="story-content">
+                        <span class="story-badge">✅ Recovered in 2 hours</span>
+                        <p class="story-quote">"I lost my college ID card right before exam week. Within 2 hours of reporting on Find-ER, someone had found it and returned it to the office. The notification system is amazing!"</p>
+                        <div class="story-author">
+                            <div class="author-avatar">RJ</div>
+                            <div class="author-info">
+                                <h4>Rahul Sharma</h4>
+                                <p>CSE, 3rd Year • Recovered: ID Card</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="story-card" data-reveal>
+                    <div class="story-icon-col">
+                        <span>📱</span>
+                    </div>
+                    <div class="story-content">
+                        <span class="story-badge">✅ Recovered in 6 hours</span>
+                        <p class="story-quote">"Left my phone in the library. Was so worried because it has all my study materials. Someone found it and reported it on Find-ER. Got it back the same day. Thank you!"</p>
+                        <div class="story-author">
+                            <div class="author-avatar">PP</div>
+                            <div class="author-info">
+                                <h4>Priya Patel</h4>
+                                <p>AIDS, 2nd Year • Recovered: Smartphone</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="story-card" data-reveal>
+                    <div class="story-icon-col">
+                        <span>🎒</span>
+                    </div>
+                    <div class="story-content">
+                        <span class="story-badge">✅ Recovered in 1 day</span>
+                        <p class="story-quote">"My backpack had all my project notes and laptop. Someone found it in the cafeteria and reported it. The admin verified and notified me within hours. So grateful!"</p>
+                        <div class="story-author">
+                            <div class="author-avatar">AK</div>
+                            <div class="author-info">
+                                <h4>Amit Kumar</h4>
+                                <p>ECE, Final Year • Recovered: Backpack with Laptop</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIAL GRID -->
+        <section class="how-it-works">
+            <div class="section-header">
+                <span class="section-badge">Testimonials</span>
+                <h2 class="section-title">What Our <span class="gradient-text">Users Say</span></h2>
+                <p class="section-description">Don't just take our word for it</p>
+            </div>
+
+            <div class="testimonial-grid-custom">
+                <div class="testimonial-card-custom" data-reveal>
+                    <div class="testimonial-avatar">📱</div>
+                    <div class="testimonial-rating">★★★★★</div>
+                    <p class="testimonial-text-custom">"Find-ER is a lifesaver! The real-time notifications helped me track my lost item's status. Highly recommend to every student."</p>
+                    <h4 style="margin-top: 10px;">Neha Singh</h4>
+                    <p style="font-size: 12px; color: var(--gray);">CSE, 2nd Year</p>
+                </div>
+
+                <div class="testimonial-card-custom" data-reveal>
+                    <div class="testimonial-avatar">👨‍🏫</div>
+                    <div class="testimonial-rating">★★★★★</div>
+                    <p class="testimonial-text-custom">"As a faculty member, I appreciate how organized and transparent this system is. Found my teaching materials within a day!"</p>
+                    <h4 style="margin-top: 10px;">Prof. Mehta</h4>
+                    <p style="font-size: 12px; color: var(--gray);">Physics Department</p>
+                </div>
+
+                <div class="testimonial-card-custom" data-reveal>
+                    <div class="testimonial-avatar">🎓</div>
+                    <div class="testimonial-rating">★★★★★</div>
+                    <p class="testimonial-text-custom">"The best campus initiative ever! Simple UI, fast matching, and helpful staff. Got my wallet back in 4 hours."</p>
+                    <h4 style="margin-top: 10px;">Arjun Nair</h4>
+                    <p style="font-size: 12px; color: var(--gray);">AIDS, 3rd Year</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SUBMIT YOUR STORY -->
+        <div class="submit-story">
+            <h2>✨ Have a success story to share?</h2>
+            <p>We'd love to hear how Find-ER helped you recover your belongings</p>
+            <button class="btn btn-primary btn-large" id="submitStoryBtn">Share Your Story →</button>
+        </div>
+
+    </main>
+
+    <div id="footer-prelogin-container"></div>
+
+    <script src="js/constants.js"></script>
+    <script src="js/helpers.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        fetch('components/navbar-prelogin.html')
+            .then(res => res.text())
+            .then(data => document.getElementById('navbar-container').innerHTML = data);
+        fetch('components/footer-prelogin.html')
+            .then(res => res.text())
+            .then(data => document.getElementById('footer-prelogin-container').innerHTML = data);
+        fetch('components/loader.html')
+            .then(res => res.text())
+            .then(data => document.getElementById('loader-container').innerHTML = data);
+
+        // Animate stats on load
+        function animateStats() {
+            const stats = document.querySelectorAll('[data-count]');
+            stats.forEach(stat => {
+                const target = parseInt(stat.getAttribute('data-count'));
+                let current = 0;
+                const increment = target / 50;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        stat.textContent = target;
+                        clearInterval(timer);
+                    } else {
+                        stat.textContent = Math.floor(current);
+                    }
+                }, 30);
+            });
+        }
+
+        setTimeout(animateStats, 500);
+
+        // Submit story button
+        document.getElementById('submitStoryBtn')?.addEventListener('click', () => {
+            alert('📝 Share your success story!\n\nEmail us at: lostfound@college.edu\n\nOr fill out the contact form on our Contact page.');
+        });
+    </script>
+</body>
+</html>

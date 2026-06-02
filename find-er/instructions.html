@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instructions – Find-ER</title>
+    <link rel="icon" href="assets/images/logo1.png">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/layout.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/utilities.css">
+    <link rel="stylesheet" href="assets/css/pages.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+    <div id="navbar-container"></div>
+    <main class="page-content">
+        <section class="page-hero">
+            <div class="container">
+                <h1>User Instructions</h1>
+                <p class="lead">Step-by-step guides to report, claim, and manage your items on Find-ER.</p>
+            </div>
+        </section>
+
+        <section class="container instruction-cards">
+            <div class="card">
+                <h3>Reporting a Lost Item</h3>
+                <ol>
+                    <li>Click <strong>Report</strong> from the navigation.</li>
+                    <li>Choose <strong>Lost</strong>, provide the item name, category and the location where it was lost.</li>
+                    <li>Upload a clear photo (if available) and add distinguishing details.</li>
+                    <li>Submit the form — we'll notify you when a potential match is found.</li>
+                </ol>
+            </div>
+
+            <div class="card">
+                <h3>Reporting a Found Item</h3>
+                <ol>
+                    <li>Click <strong>Report</strong> and choose <strong>Found</strong>.</li>
+                    <li>Describe where you found it, approximate time, and upload a photo.</li>
+                    <li>Provide a contact number or leave it anonymous for initial posting.</li>
+                    <li>The lost owner will be notified if a match is identified.</li>
+                </ol>
+            </div>
+
+            <div class="card">
+                <h3>Claiming an Item</h3>
+                <ol>
+                    <li>When an item is marked <strong>Ready for Pickup</strong>, visit the Lost & Found office.</li>
+                    <li>Bring your College ID and any supporting proof that it's your item.</li>
+                    <li>The office will verify and hand over the item upon successful validation.</li>
+                </ol>
+            </div>
+
+            <div class="card">
+                <h3>Managing Your Reports</h3>
+                <ol>
+                    <li>Go to your <strong>Profile</strong> to view all your reports.</li>
+                    <li>You can edit or cancel an active report if the item is found.</li>
+                    <li>Use the notifications panel to stay updated on matches.</li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="container">
+            <h2>Tips for Faster Recovery</h2>
+            <ul class="tips">
+                <li>Upload clear photos and describe unique marks.</li>
+                <li>Report the item as soon as possible to improve match chances.</li>
+                <li>Check notifications and email for match alerts regularly.</li>
+            </ul>
+        </section>
+    </main>
+
+    <div id="footer-prelogin-container"></div>
+
+    <script src="js/helpers.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        fetch('components/navbar-prelogin.html').then(res => res.text()).then(html => document.getElementById('navbar-container').innerHTML = html);
+        fetch('components/footer-prelogin.html').then(res => res.text()).then(html => document.getElementById('footer-prelogin-container').innerHTML = html);
+    </script>
+</body>
+</html>

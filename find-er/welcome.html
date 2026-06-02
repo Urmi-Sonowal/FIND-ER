@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find-ER – Reconnect with your belongings</title>
+    <link rel="icon" href="assets/images/logo1.png">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/layout.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/utilities.css">
+    <link rel="stylesheet" href="assets/css/prelogin-components.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <style>
+            body {
+        padding-top: 70px;
+    }
+    
+    @media (max-width: 768px) {
+        body {
+            padding-top: 60px;
+        }
+    }
+    </style>
+</head>
+<body>
+
+    <div id="loader-container"></div>
+
+    <!-- DECORATIVE BACKGROUND ELEMENTS -->
+    <div class="bg-circle circle-1"></div>
+    <div class="bg-circle circle-2"></div>
+    <div class="bg-circle circle-3"></div>
+    <div class="bg-pattern"></div>
+
+    <!-- NAVIGATION -->
+    <div id="navbar-container"></div>
+
+    <main>
+
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <span class="hero-badge">🏆 Campus Trusted Since 2024</span>
+                    <h1 class="hero-title">
+                        Lost something?<br>
+                        <span class="gradient-text">We'll help you find it</span>
+                    </h1>
+                    <p class="hero-description">
+                        Find-ER is your intelligent campus companion that connects lost belongings 
+                        with their owners. Simple, secure, and surprisingly fast.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="register.html" class="btn btn-primary btn-large">Start Recovery →</a>
+                        <a href="#how-it-works" class="btn btn-text">See how it works</a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">500+</span>
+                            <span class="stat-label">Items Reunited</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">95%</span>
+                            <span class="stat-label">Success Rate</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">24h</span>
+                            <span class="stat-label">Avg. Recovery</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual">
+    <div class="visual-card floating">
+        <div class="visual-icon">🔍</div>
+        <div class="visual-text">
+            <strong>ID Card</strong>
+            <span>Lost • 2h ago</span>
+        </div>
+    </div>
+    <div class="visual-card floating delay-1">
+        <div class="visual-icon">✅</div>
+        <div class="visual-text">
+            <strong>Keys Found</strong>
+            <span>Library • 10min ago</span>
+        </div>
+    </div>
+    <div class="visual-card floating delay-2">
+        <div class="visual-icon">🔄</div>
+        <div class="visual-text">
+            <strong>Recovered</strong>
+            <span>Backpack • Just now</span>
+        </div>
+    </div>
+</div> 
+                </div>
+            </div>
+        </section>
+
+        <!-- TRUSTED BY SECTION -->
+        <section class="trusted-section">
+            <p class="trusted-label">Trusted by students & staff across campus</p>
+            <div class="trusted-logos">
+                <span class="logo-placeholder">CSE Department</span>
+                <span class="logo-placeholder">Library</span>
+                <span class="logo-placeholder">Student Council</span>
+                <span class="logo-placeholder">Admin Office</span>
+            </div>
+        </section>
+
+        <!-- HOW IT WORKS -->
+        <section id="how-it-works" class="how-it-works">
+            <div class="section-header">
+                <br>
+                <span class="section-badge">Simple Process</span>
+                <h2 class="section-title">How Find-ER works in <span class="gradient-text">4 simple steps</span></h2>
+                <p class="section-description">From reporting to recovery – we've made it effortless</p>
+            </div>
+
+            <div class="steps-container">
+                <div class="step-card" data-reveal>
+                    <img class="step-img" src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=400&q=80" alt="Report" loading="lazy">
+                    <div class="step-number">01</div>
+                    <div class="step-icon">📝</div>
+                    <h3>Report</h3>
+                    <p>Submit details of lost or found item in under 2 minutes</p>
+                    <div class="step-arrow">→</div>
+                </div>
+
+                <div class="step-card" data-reveal>
+                    <img class="step-img" src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&q=80" alt="Verify" loading="lazy">
+                    <div class="step-number">02</div>
+                    <div class="step-icon">✓</div>
+                    <h3>Verify</h3>
+                    <p>Office reviews and validates the submission</p>
+                    <div class="step-arrow">→</div>
+                </div>
+
+                <div class="step-card" data-reveal>
+                    <img class="step-img" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&q=80" alt="Match" loading="lazy">
+                    <div class="step-number">03</div>
+                    <div class="step-icon">🔄</div>
+                    <h3>Match</h3>
+                    <p>System automatically matches lost with found items</p>
+                    <div class="step-arrow">→</div>
+                </div>
+
+                <div class="step-card" data-reveal>
+                    <img class="step-img" src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=400&q=80" alt="Recover" loading="lazy">
+                    <div class="step-number">04</div>
+                    <div class="step-icon">🎉</div>
+                    <h3>Recover</h3>
+                    <p>Collect your item from the office with ID</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FEATURES SECTION -->
+        <section class="features">
+            <div class="section-header">
+                <br>
+                <span class="section-badge">Why Choose Us</span>
+                <h2 class="section-title">Everything you need for <span class="gradient-text">peace of mind</span></h2>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card-alt" data-reveal>
+                    <div class="feature-icon-wrapper">
+                        <span class="feature-icon-alt">⚡</span>
+                    </div>
+                    <h3>Lightning Fast</h3>
+                    <p>Real-time updates and instant notifications when your item is found</p>
+                </div>
+
+                <div class="feature-card-alt" data-reveal>
+                    <div class="feature-icon-wrapper">
+                        <span class="feature-icon-alt">🔒</span>
+                    </div>
+                    <h3>Secure & Verified</h3>
+                    <p>All claims verified by office staff to ensure rightful ownership</p>
+                </div>
+
+                <div class="feature-card-alt" data-reveal>
+                    <div class="feature-icon-wrapper">
+                        <span class="feature-icon-alt">📱</span>
+                    </div>
+                    <h3>Mobile Friendly</h3>
+                    <p>Access from any device – report on the go, right from your phone</p>
+                </div>
+
+                <div class="feature-card-alt" data-reveal>
+                    <div class="feature-icon-wrapper">
+                        <span class="feature-icon-alt">🔄</span>
+                    </div>
+                    <h3>Smart Matching</h3>
+                    <p>Automatic matching algorithm suggests potential matches</p>
+                </div>
+
+                <div class="feature-card-alt" data-reveal>
+                    <div class="feature-icon-wrapper">
+                        <span class="feature-icon-alt">📊</span>
+                    </div>
+                    <h3>Track Status</h3>
+                    <p>Follow your item's journey from report to recovery</p>
+                </div>
+
+                <div class="feature-card-alt" data-reveal>
+                    <div class="feature-icon-wrapper">
+                        <span class="feature-icon-alt">🎓</span>
+                    </div>
+                    <h3>Campus Exclusive</h3>
+                    <p>Built specifically for our college community</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- LIVE PREVIEW SECTION -->
+        <section class="live-preview">
+            <div class="preview-container">
+                <div class="preview-content">
+                    <span class="section-badge">Live Activity</span>
+                    <h2 class="section-title">See what's happening <span class="gradient-text">right now</span></h2>
+                    <p class="preview-description">Real-time updates from the campus Lost & Found</p>
+                    
+                    <div class="activity-feed">
+                        <div class="activity-item">
+                            <span class="activity-time">2 min ago</span>
+                            <p><strong>ID Card</strong> reported lost at <strong>CSE Block</strong></p>
+                        </div>
+                        <div class="activity-item">
+                            <span class="activity-time">15 min ago</span>
+                            <p><strong>Water Bottle</strong> found at <strong>Library</strong></p>
+                        </div>
+                        <div class="activity-item">
+                            <span class="activity-time">1 hour ago</span>
+                            <p><strong>Backpack</strong> successfully recovered 🎉</p>
+                        </div>
+                        <div class="activity-item">
+                            <span class="activity-time">2 hours ago</span>
+                            <p><strong>Calculator</strong> verified and ready for pickup</p>
+                        </div>
+                    </div>
+                    
+                    <a href="login.html" class="btn btn-secondary">View Full Activity →</a>
+                </div>
+                
+                <div class="preview-card">
+                    <div class="preview-card-header">
+                        <span>📦 Recent Found Items</span>
+                        <span class="badge">Live</span>
+                    </div>
+                    <div class="preview-card-body">
+                        <div class="preview-item">
+                            <span>🪪 College ID</span>
+                            <span class="tag tag-ready">Ready</span>
+                        </div>
+                        <div class="preview-item">
+                            <span>🎧 Headphones</span>
+                            <span class="tag tag-verify">Verify</span>
+                        </div>
+                        <div class="preview-item">
+                            <span>🔑 Keys</span>
+                            <span class="tag tag-claim">Claim</span>
+                        </div>
+                        <div class="preview-item">
+                            <span>📱 Phone</span>
+                            <span class="tag tag-ready">Ready</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIALS -->
+        <section class="testimonials">
+            <div class="section-header">
+                <span class="section-badge">Success Stories</span>
+                <h2 class="section-title">Real people, <span class="gradient-text">real recoveries</span></h2>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="quote">"</div>
+                    <p class="testimonial-text">Found my ID card within 2 hours. The system works like magic!</p>
+                    <div class="testimonial-author">
+                        <span class="author-name">Rahul Sharma</span>
+                        <span class="author-dept">CSE, 3rd Year</span>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="quote">"</div>
+                    <p class="testimonial-text">Lost my notes before exams. Someone returned them through Find-ER.</p>
+                    <div class="testimonial-author">
+                        <span class="author-name">Priya Patel</span>
+                        <span class="author-dept">AIDS, 2nd Year</span>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="quote">"</div>
+                    <p class="testimonial-text">The verification process is smooth and secure. Great initiative!</p>
+                    <div class="testimonial-author">
+                        <span class="author-name">Amit Kumar</span>
+                        <span class="author-dept">ECE, Final Year</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- OFFICE HOURS BANNER -->
+        <section class="office-banner">
+            <div class="banner-content">
+                <div class="banner-icon">🏢</div>
+                <div class="banner-text">
+                    <h3>Lost & Found Office</h3>
+                    <p>Admin Block, Room 205 • Monday to Friday • 9:00 AM – 4:00 PM</p>
+                </div>
+                <a href="contact.html" class="btn btn-outline-light">Get Directions</a>
+            </div>
+        </section>
+
+        <!-- CTA SECTION -->
+        <section class="cta-section">
+            <div class="cta-container">
+                <h2 class="cta-title">Ready to reunite with your belongings?</h2>
+                <p class="cta-description">Join hundreds of students who've recovered their items</p>
+                <div class="cta-actions">
+                    <a href="register.html" class="btn btn-primary btn-large">Create Free Account</a>
+                    <a href="login.html" class="btn btn-outline btn-large">Sign In</a>
+                </div>
+                <p class="cta-note">No credit card required • 100% free for students & staff</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <div id="footer-prelogin-container"></div>
+
+    <script src="js/constants.js"></script>
+    <script src="js/helpers.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        // Load components
+        fetch('components/navbar-prelogin.html')
+            .then(res => res.text())
+            .then(data => document.getElementById('navbar-container').innerHTML = data);
+        fetch('components/footer-prelogin.html')
+            .then(res => res.text())
+            .then(data => document.getElementById('footer-prelogin-container').innerHTML = data);
+        fetch('components/loader.html')
+            .then(res => res.text())
+            .then(data => document.getElementById('loader-container').innerHTML = data);
+    </script>
+</body>
+</html>

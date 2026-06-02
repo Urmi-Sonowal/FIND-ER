@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ – Find-ER</title>
+    <link rel="icon" href="assets/images/logo1.png">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/layout.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/utilities.css">
+    <link rel="stylesheet" href="assets/css/pages.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+    <div id="navbar-container"></div>
+    <main class="page-content">
+        <section class="page-hero">
+            <div class="container">
+                <h1>Frequently Asked Questions</h1>
+                <p class="lead">Answers to common questions about reporting, claiming and using Find-ER.</p>
+            </div>
+        </section>
+
+        <section class="faq-grid container">
+            <article class="faq-item">
+                <h3>How do I report a lost item?</h3>
+                <p>Click "Report" in the navigation, fill the form with details and upload a photo if available. We'll notify you when there's a potential match.</p>
+            </article>
+
+            <article class="faq-item">
+                <h3>How can I claim a found item?</h3>
+                <p>If an item is marked <strong>Ready for Pickup</strong>, visit the Lost & Found office with your College ID. The Office may ask additional verification questions.</p>
+            </article>
+
+            <article class="faq-item">
+                <h3>What if I don't have a photo?</h3>
+                <p>Provide as many distinguishing details as possible: color, brand, markings, and exact location/time when the item was lost.</p>
+            </article>
+
+            <article class="faq-item">
+                <h3>How long are items stored?</h3>
+                <p>Found items are stored for up to 30 days. Per college policy, unclaimed items beyond that may be disposed of or donated.</p>
+            </article>
+
+            <article class="faq-item">
+                <h3>Is my personal data safe?</h3>
+                <p>Yes — Find-ER stores only necessary contact details for reporting and retrieval. We do not share personal data without consent.</p>
+            </article>
+
+            <article class="faq-item">
+                <h3>Who do I contact for technical issues?</h3>
+                <p>Contact IT support at <strong>support@college.edu</strong> or use the Contact page to submit a message.</p>
+            </article>
+        </section>
+
+        <section class="container">
+            <h2>Still have questions?</h2>
+            <p class="muted">Use the contact form on the <a href="contact.html">Contact</a> page and we'll get back within 1 working day.</p>
+        </section>
+    </main>
+
+    <div id="footer-prelogin-container"></div>
+
+    <script src="js/helpers.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        fetch('components/navbar-prelogin.html').then(res => res.text()).then(html => document.getElementById('navbar-container').innerHTML = html);
+        fetch('components/footer-prelogin.html').then(res => res.text()).then(html => document.getElementById('footer-prelogin-container').innerHTML = html);
+    </script>
+</body>
+</html>

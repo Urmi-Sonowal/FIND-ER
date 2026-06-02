@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact – Find-ER</title>
+    <link rel="icon" href="assets/images/logo1.png">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/layout.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/utilities.css">
+    <link rel="stylesheet" href="assets/css/prelogin-components.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/pages.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <style>
+        body {
+            padding-top: 70px;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding-top: 60px;
+            }
+        }
+
+        /* BIG ACTION BUTTON under hero */
+        .hero-action-btn-wrapper {
+            margin-top: 32px;
+            text-align: center;
+        }
+
+        .hero-big-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            padding: 18px 42px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border: none;
+            border-radius: 80px;
+            font-size: 18px;
+            font-weight: 800;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 10px 30px rgba(47, 127, 162, 0.4);
+            letter-spacing: 0.5px;
+            animation: btnPulse 2s infinite;
+        }
+
+        @keyframes btnPulse {
+            0%, 100% {
+                box-shadow: 0 10px 30px rgba(47, 127, 162, 0.4);
+                transform: scale(1);
+            }
+            50% {
+                box-shadow: 0 15px 40px rgba(47, 127, 162, 0.6);
+                transform: scale(1.02);
+            }
+        }
+
+        .hero-big-btn:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 20px 40px rgba(47, 127, 162, 0.5);
+        }
+
+        .hero-big-btn:active {
+            transform: translateY(2px) scale(0.98);
+        }
+
+        .hero-big-btn svg {
+            width: 22px;
+            height: 22px;
+            transition: transform 0.3s ease;
+        }
+
+        .hero-big-btn:hover svg {
+            transform: translateX(6px);
+        }
+
+        /* Enhanced Contact Form Styles - No image */
+        .contact-form-enhanced {
+            background: var(--white);
+            border-radius: 32px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-form-enhanced:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 30px 60px -12px rgba(47, 127, 162, 0.3);
+        }
+
+        .form-header-enhanced {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            padding: 32px 32px 28px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .form-header-enhanced::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: headerPulse 8s ease-in-out infinite;
+        }
+
+        @keyframes headerPulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .form-header-enhanced h3 {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .form-header-enhanced p {
+            font-size: 14px;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .form-header-enhanced .form-icon {
+            font-size: 48px;
+            margin-bottom: 12px;
+            position: relative;
+            z-index: 1;
+            display: inline-block;
+            animation: iconFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes iconFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .form-body-enhanced {
+            padding: 32px;
+        }
+
+        /* Modern Input Groups */
+        .input-group-enhanced {
+            margin-bottom: 24px;
+            position: relative;
+        }
+
+        .input-group-enhanced label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-2);
+            margin-bottom: 8px;
+            transition: color 0.3s ease;
+        }
+
+        .input-group-enhanced label i,
+        .input-group-enhanced label .label-icon {
+            font-size: 16px;
+        }
+
+        .input-group-enhanced input,
+        .input-group-enhanced select,
+        .input-group-enhanced textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid var(--border);
+            border-radius: 16px;
+            font-size: 15px;
+            font-family: inherit;
+            background: var(--surface);
+            color: var(--text-1);
+            transition: all 0.3s ease;
+        }
+
+        .input-group-enhanced input:focus,
+        .input-group-enhanced select:focus,
+        .input-group-enhanced textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(47, 127, 162, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .input-group-enhanced input:hover,
+        .input-group-enhanced select:hover,
+        .input-group-enhanced textarea:hover {
+            border-color: var(--primary-400);
+        }
+
+        .input-group-enhanced textarea {
+            resize: vertical;
+            min-height: 130px;
+        }
+
+        /* Character Counter */
+        .char-counter {
+            text-align: right;
+            font-size: 11px;
+            color: var(--text-4);
+            margin-top: 6px;
+            transition: color 0.3s ease;
+        }
+
+        .char-counter.warning {
+            color: #f59e0b;
+        }
+
+        .char-counter.danger {
+            color: #ef4444;
+        }
+
+        /* BIG SUBMIT BUTTON */
+        .submit-btn-enhanced {
+            width: 100%;
+            padding: 18px 28px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border: none;
+            border-radius: 60px;
+            font-size: 18px;
+            font-weight: 800;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            margin-top: 16px;
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.5px;
+        }
+
+        .submit-btn-enhanced::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+
+        .submit-btn-enhanced:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .submit-btn-enhanced:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(47, 127, 162, 0.4);
+        }
+
+        .submit-btn-enhanced:active {
+            transform: translateY(1px) scale(0.98);
+        }
+
+        .submit-btn-enhanced svg {
+            width: 22px;
+            height: 22px;
+            transition: transform 0.3s ease;
+        }
+
+        .submit-btn-enhanced:hover svg {
+            transform: translateX(5px);
+        }
+
+        /* Form Success/Error States */
+        .input-group-enhanced.success input,
+        .input-group-enhanced.success select,
+        .input-group-enhanced.success textarea {
+            border-color: #10b981;
+            background: #ecfdf5;
+        }
+
+        .input-group-enhanced.error input,
+        .input-group-enhanced.error select,
+        .input-group-enhanced.error textarea {
+            border-color: #ef4444;
+            background: #fef2f2;
+            animation: shake 0.4s ease;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        .error-message-enhanced {
+            font-size: 11px;
+            color: #ef4444;
+            margin-top: 6px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Success Toast Animation */
+        .toast-success {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 16px 24px;
+            border-radius: 60px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+            z-index: 10000;
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4);
+            animation: slideInRight 0.3s ease, fadeOut 0.3s ease 2.7s forwards;
+            cursor: pointer;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        /* Loading State for Button */
+        .submit-btn-enhanced.loading {
+            pointer-events: none;
+            opacity: 0.7;
+        }
+
+        .submit-btn-enhanced.loading .btn-text {
+            visibility: hidden;
+        }
+
+        .submit-btn-enhanced.loading::after {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Contact Cards Enhancement */
+        .feature-card-alt {
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .feature-card-alt:hover {
+            transform: translateY(-8px) scale(1.02);
+        }
+
+        .feature-card-alt .contact-detail-box {
+            transition: all 0.3s ease;
+        }
+
+        .feature-card-alt:hover .contact-detail-box {
+            transform: translateY(-4px);
+        }
+
+        /* Scroll to form button */
+        .scroll-to-form {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .scroll-to-form:hover {
+            gap: 12px;
+            color: var(--primary-dark);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .hero-big-btn {
+                padding: 14px 32px;
+                font-size: 16px;
+            }
+            
+            .hero-big-btn svg {
+                width: 18px;
+                height: 18px;
+            }
+            
+            .form-header-enhanced {
+                padding: 24px 20px;
+            }
+            
+            .form-header-enhanced h3 {
+                font-size: 22px;
+            }
+            
+            .form-body-enhanced {
+                padding: 24px 20px;
+            }
+            
+            .submit-btn-enhanced {
+                padding: 14px 24px;
+                font-size: 16px;
+            }
+            
+            .submit-btn-enhanced svg {
+                width: 18px;
+                height: 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-big-btn {
+                padding: 12px 24px;
+                font-size: 14px;
+            }
+            
+            .form-header-enhanced .form-icon {
+                font-size: 36px;
+            }
+            
+            .form-header-enhanced h3 {
+                font-size: 20px;
+            }
+            
+            .input-group-enhanced input,
+            .input-group-enhanced select,
+            .input-group-enhanced textarea {
+                padding: 12px 14px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="loader-container"></div>
+
+    <!-- DECORATIVE BACKGROUND ELEMENTS -->
+    <div class="bg-circle circle-1"></div>
+    <div class="bg-circle circle-2"></div>
+    <div class="bg-pattern"></div>
+
+    <!-- NAVIGATION -->
+    <div id="navbar-container"></div>
+
+    <main>
+
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <span class="hero-badge">📞 Get in Touch</span>
+                    <h1 class="hero-title">
+                        Contact & <span class="gradient-text">Support</span>
+                    </h1>
+                    <p class="hero-description">
+                        Need help with reporting a lost item, claiming a found item,
+                        or using the Find-ER portal? We're here to assist you.
+                    </p>
+                    
+                    <!-- BIG ACTION BUTTON - Easy access to send message -->
+                    <div class="hero-action-btn-wrapper">
+                        <button class="hero-big-btn" id="scrollToFormBtn">
+                            <span>✉️ Send Message Now</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <polyline points="5 12 12 19 19 12"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <!-- Quick scroll hint -->
+                    <p style="margin-top: 20px; font-size: 13px; color: var(--gray);">
+                        ⬇️ <a href="#messageForm" class="scroll-to-form">Scroll down to send us a message</a>
+                    </p>
+                </div>
+                <div class="hero-visual">
+                    <div class="visual-card floating">
+                        <div class="visual-icon">🏢</div>
+                        <div class="visual-text">
+                            <strong>Main Office</strong>
+                            <span>Room 205, Admin Block</span>
+                        </div>
+                    </div>
+                    <div class="visual-card floating delay-1">
+                        <div class="visual-icon">📧</div>
+                        <div class="visual-text">
+                            <strong>Email</strong>
+                            <span>lostfound@college.edu</span>
+                        </div>
+                    </div>
+                    <div class="visual-card floating delay-2">
+                        <div class="visual-icon">🚨</div>
+                        <div class="visual-text">
+                            <strong>Emergency</strong>
+                            <span>24×7 Security</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT CARDS -->
+        <section class="features" style="background: var(--white);">
+            <div class="section-header">
+                <span class="section-badge">Support Channels</span>
+                <h2 class="section-title">How to <span class="gradient-text">Reach Us</span></h2>
+            </div>
+
+            <div class="features-grid" style="grid-template-columns: repeat(3, 1fr);">
+                <div class="feature-card-alt" data-reveal>
+                    <div class="feature-icon-wrapper" style="background: #e0f2fe;">
+                        <span class="feature-icon-alt">🏢</span>
+                    </div>
+                    <h3>Lost & Found Office</h3>
+                    <p style="margin-bottom: 20px;">Primary support center for all lost and found related queries.</p>
+                    <div class="contact-detail-box" style="background: var(--primary-light); padding: 15px; border-radius: 12px; transition: all 0.3s ease;">
+                        <p><strong>📍 Location:</strong> Admin Block, Room 205</p>
+                        <p><strong>🕒 Hours:</strong> 9:00 AM – 4:00 PM (Mon–Fri)</p>
+                        <p><strong>📞 Phone:</strong> +91 9876543210</p>
+                        <p><strong>📧 Email:</strong> lostfound@college.edu</p>
+                    </div>
+                </div>
+
+                <div class="feature-card-alt" data-reveal>
+                    <div class="feature-icon-wrapper" style="background: #fee2e2;">
+                        <span class="feature-icon-alt">🚨</span>
+                    </div>
+                    <h3>Emergency Support</h3>
+                    <p style="margin-bottom: 20px;">For urgent cases such as documents, valuables, or medicines.</p>
+                    <div class="contact-detail-box" style="background: #fee2e2; padding: 15px; border-radius: 12px; transition: all 0.3s ease;">
+                        <p><strong>📍 Location:</strong> Main Gate Security</p>
+                        <p><strong>🕒 Availability:</strong> 24 × 7</p>
+                        <p><strong>📞 Emergency:</strong> +91 9876543211</p>
+                        <p><strong>⚠️ Note:</strong> Emergency cases only</p>
+                    </div>
+                </div>
+
+                <div class="feature-card-alt" data-reveal>
+                    <div class="feature-icon-wrapper" style="background: #e0f2fe;">
+                        <span class="feature-icon-alt">💻</span>
+                    </div>
+                    <h3>Technical Assistance</h3>
+                    <p style="margin-bottom: 20px;">Facing issues while using the portal? Contact IT support.</p>
+                    <div class="contact-detail-box" style="background: #e0f2fe; padding: 15px; border-radius: 12px; transition: all 0.3s ease;">
+                        <p><strong>📍 Location:</strong> Computer Center</p>
+                        <p><strong>🕒 Hours:</strong> 8:00 AM – 6:00 PM</p>
+                        <p><strong>📧 Email:</strong> support@college.edu</p>
+                        <p><strong>📞 Phone:</strong> +91 9876543212</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ENHANCED CONTACT FORM SECTION - NO IMAGE -->
+        <section id="messageForm" class="features" style="background: var(--light); padding: 60px 0;">
+            <div class="section-header">
+                <span class="section-badge">📬 Message Center</span>
+                <h2 class="section-title">Send Your <span class="gradient-text">Inquiry</span></h2>
+                <p class="section-description">We'll respond within 1 working day. Fill out the form below.</p>
+            </div>
+            
+            <!-- FORM ONLY - NO IMAGE SIDEBAR -->
+            <div class="contact-form-enhanced">
+                <div class="form-header-enhanced">
+                    <div class="form-icon">💬</div>
+                    <h3>We'd Love to Hear From You</h3>
+                    <p>Fill out the form and our team will get back to you shortly</p>
+                </div>
+                
+                <div class="form-body-enhanced">
+                    <form id="contactMessageForm">
+                        <div class="input-group-enhanced" id="nameGroup">
+                            <label>
+                                <span class="label-icon">👤</span>
+                                Full Name
+                            </label>
+                            <input type="text" id="contactName" name="contactName" placeholder="Enter your full name" required autocomplete="name">
+                            <div class="error-message-enhanced" id="nameError" style="display: none;">⚠️ Please enter your name</div>
+                        </div>
+                        
+                        <div class="input-group-enhanced" id="collegeIdGroup">
+                            <label>
+                                <span class="label-icon">🆔</span>
+                                College ID
+                            </label>
+                            <input type="text" id="contactCollegeId" name="contactCollegeId" placeholder="e.g., CSE2023001" required>
+                            <div class="error-message-enhanced" id="collegeIdError" style="display: none;">⚠️ Please enter your College ID</div>
+                        </div>
+                        
+                        <div class="input-group-enhanced" id="subjectGroup">
+                            <label>
+                                <span class="label-icon">📌</span>
+                                Subject
+                            </label>
+                            <select id="contactSubject" name="contactSubject" required>
+                                <option value="" disabled selected hidden>Select a subject</option>
+                                <option>Lost Item Query</option>
+                                <option>Found Item Claim</option>
+                                <option>Technical Issue</option>
+                                <option>Feedback / Suggestion</option>
+                                <option>Report an Issue</option>
+                                <option>Other</option>
+                            </select>
+                            <div class="error-message-enhanced" id="subjectError" style="display: none;">⚠️ Please select a subject</div>
+                        </div>
+                        
+                        <div class="input-group-enhanced" id="messageGroup">
+                            <label>
+                                <span class="label-icon">✏️</span>
+                                Message
+                            </label>
+                            <textarea id="contactMessage" name="contactMessage" rows="5" placeholder="Describe your query in detail..." required minlength="20"></textarea>
+                            <div class="char-counter" id="charCounter">0 / 500 characters</div>
+                            <div class="error-message-enhanced" id="messageError" style="display: none;">⚠️ Message must be at least 20 characters</div>
+                        </div>
+                        
+                        <!-- BIG PROMINENT SUBMIT BUTTON -->
+                        <button type="submit" class="submit-btn-enhanced" id="submitContactBtn">
+                            <span class="btn-text">Send Message</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="22" y1="2" x2="11" y2="13"></line>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                            </svg>
+                        </button>
+                    </form>
+                    
+                    <div id="contactFormMessage" style="margin-top: 20px; text-align: center;"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ SECTION -->
+        <section class="how-it-works">
+            <div class="section-header">
+                <span class="section-badge">Common Questions</span>
+                <h2 class="section-title">Frequently Asked <span class="gradient-text">Questions</span></h2>
+            </div>
+
+            <div class="steps-container" style="grid-template-columns: repeat(2, 1fr); max-width: 1000px; margin: 0 auto;">
+                <div class="step-card" style="text-align: left;">
+                    <h3 style="color: var(--primary);">How long are found items stored?</h3>
+                    <p>Found items are securely stored for up to 30 days as per college policy.</p>
+                </div>
+
+                <div class="step-card" style="text-align: left;">
+                    <h3 style="color: var(--primary);">What ID is required for collection?</h3>
+                    <p>A valid college ID is mandatory. Additional verification may be required.</p>
+                </div>
+
+                <div class="step-card" style="text-align: left;">
+                    <h3 style="color: var(--primary);">Can I report after office hours?</h3>
+                    <p>Yes. The Find-ER portal is available 24/7 for reporting.</p>
+                </div>
+
+                <div class="step-card" style="text-align: left;">
+                    <h3 style="color: var(--primary);">Is there any service charge?</h3>
+                    <p>No. The lost & found service is completely free.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- OFFICE HOURS BANNER -->
+        <section class="office-banner">
+            <div class="banner-content">
+                <div class="banner-icon">🏢</div>
+                <div class="banner-text">
+                    <h3>Lost & Found Office</h3>
+                    <p>Admin Block, Room 205 • Monday to Friday • 9:00 AM – 4:00 PM</p>
+                </div>
+                <a href="#" class="btn btn-outline-light" onclick="return false;">Get Directions</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <div id="footer-prelogin-container"></div>
+
+    <script src="js/constants.js"></script>
+    <script src="js/helpers.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        // Load components
+        fetch('components/navbar-prelogin.html')
+            .then(res => res.text())
+            .then(data => document.getElementById('navbar-container').innerHTML = data);
+        fetch('components/footer-prelogin.html')
+            .then(res => res.text())
+            .then(data => document.getElementById('footer-prelogin-container').innerHTML = data);
+        fetch('components/loader.html')
+            .then(res => res.text())
+            .then(data => document.getElementById('loader-container').innerHTML = data);
+        
+        // Initialize contact form after components load
+        setTimeout(() => {
+            initEnhancedContactForm();
+        }, 200);
+        
+        function initEnhancedContactForm() {
+            const form = document.getElementById('contactMessageForm');
+            const nameInput = document.getElementById('contactName');
+            const collegeIdInput = document.getElementById('contactCollegeId');
+            const subjectSelect = document.getElementById('contactSubject');
+            const messageTextarea = document.getElementById('contactMessage');
+            const submitBtn = document.getElementById('submitContactBtn');
+            const charCounter = document.getElementById('charCounter');
+            const MAX_CHARS = 500;
+            const MIN_CHARS = 20;
+            
+            // Scroll to form button
+            const scrollBtn = document.getElementById('scrollToFormBtn');
+            if (scrollBtn) {
+                scrollBtn.addEventListener('click', () => {
+                    const formSection = document.getElementById('messageForm');
+                    if (formSection) {
+                        formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            }
+            
+            // Pre-fill user info if logged in
+            const user = Storage.getCurrentUser();
+            if (user) {
+                if (nameInput) nameInput.value = user.name || '';
+                if (collegeIdInput) collegeIdInput.value = user.collegeId || '';
+            }
+            
+            // Character counter with styling
+            if (messageTextarea && charCounter) {
+                function updateCharCounter() {
+                    const length = messageTextarea.value.length;
+                    charCounter.textContent = `${length} / ${MAX_CHARS} characters`;
+                    
+                    if (length > MAX_CHARS) {
+                        charCounter.classList.add('danger');
+                        charCounter.classList.remove('warning');
+                    } else if (length > MAX_CHARS - 100) {
+                        charCounter.classList.add('warning');
+                        charCounter.classList.remove('danger');
+                    } else {
+                        charCounter.classList.remove('warning', 'danger');
+                    }
+                    
+                    if (length >= MIN_CHARS && length <= MAX_CHARS) {
+                        charCounter.style.color = '#10b981';
+                    } else if (length < MIN_CHARS) {
+                        charCounter.style.color = '#f59e0b';
+                    } else {
+                        charCounter.style.color = '#ef4444';
+                    }
+                }
+                
+                messageTextarea.addEventListener('input', updateCharCounter);
+                updateCharCounter();
+            }
+            
+            // Real-time validation
+            function validateField(input, groupId, errorId, validator) {
+                const group = document.getElementById(groupId);
+                const errorEl = document.getElementById(errorId);
+                const isValid = validator(input.value);
+                
+                if (isValid) {
+                    group?.classList.remove('error');
+                    group?.classList.add('success');
+                    if (errorEl) errorEl.style.display = 'none';
+                } else {
+                    group?.classList.remove('success');
+                    group?.classList.add('error');
+                    if (errorEl) errorEl.style.display = 'flex';
+                }
+                return isValid;
+            }
+            
+            if (nameInput) {
+                nameInput.addEventListener('input', () => {
+                    validateField(nameInput, 'nameGroup', 'nameError', (val) => val.trim().length >= 2);
+                });
+            }
+            
+            if (collegeIdInput) {
+                collegeIdInput.addEventListener('input', () => {
+                    validateField(collegeIdInput, 'collegeIdGroup', 'collegeIdError', (val) => val.trim().length >= 3);
+                });
+            }
+            
+            if (subjectSelect) {
+                subjectSelect.addEventListener('change', () => {
+                    validateField(subjectSelect, 'subjectGroup', 'subjectError', (val) => val && val !== '');
+                });
+            }
+            
+            if (messageTextarea) {
+                messageTextarea.addEventListener('input', () => {
+                    validateField(messageTextarea, 'messageGroup', 'messageError', (val) => val.trim().length >= MIN_CHARS && val.trim().length <= MAX_CHARS);
+                });
+            }
+            
+            // Show toast notification
+            function showToast(message, type = 'success') {
+                const toast = document.createElement('div');
+                toast.className = 'toast-success';
+                toast.innerHTML = `
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>${message}</span>
+                `;
+                document.body.appendChild(toast);
+                
+                setTimeout(() => {
+                    toast.remove();
+                }, 3000);
+                
+                toast.addEventListener('click', () => toast.remove());
+            }
+            
+            // Form submission
+            if (form) {
+                form.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    
+                    const name = nameInput?.value.trim() || '';
+                    const collegeId = collegeIdInput?.value.trim() || '';
+                    const subject = subjectSelect?.value || '';
+                    const message = messageTextarea?.value.trim() || '';
+                    
+                    // Validate all fields
+                    const isNameValid = name.length >= 2;
+                    const isCollegeIdValid = collegeId.length >= 3;
+                    const isSubjectValid = subject && subject !== '';
+                    const isMessageValid = message.length >= MIN_CHARS && message.length <= MAX_CHARS;
+                    
+                    if (!isNameValid) {
+                        showToast('Please enter your full name', 'error');
+                        nameInput?.focus();
+                        return;
+                    }
+                    
+                    if (!isCollegeIdValid) {
+                        showToast('Please enter a valid College ID', 'error');
+                        collegeIdInput?.focus();
+                        return;
+                    }
+                    
+                    if (!isSubjectValid) {
+                        showToast('Please select a subject', 'error');
+                        subjectSelect?.focus();
+                        return;
+                    }
+                    
+                    if (!isMessageValid) {
+                        showToast(`Message must be between ${MIN_CHARS} and ${MAX_CHARS} characters`, 'error');
+                        messageTextarea?.focus();
+                        return;
+                    }
+                    
+                    // Show loading state on button
+                    submitBtn.classList.add('loading');
+                    
+                    // Simulate API call (replace with actual storage call)
+                    await new Promise(resolve => setTimeout(resolve, 800));
+                    
+                    // Save to storage
+                    Storage.addContactMessage({ name, collegeId, subject, message });
+                    
+                    // Reset loading state
+                    submitBtn.classList.remove('loading');
+                    
+                    // Show success toast
+                    showToast('Message sent successfully! We will respond within 1 working day.', 'success');
+                    
+                    // Reset form
+                    form.reset();
+                    
+                    // Reset validation styles
+                    document.querySelectorAll('.input-group-enhanced').forEach(group => {
+                        group.classList.remove('success', 'error');
+                    });
+                    
+                    // Pre-fill user info again if logged in
+                    const currentUser = Storage.getCurrentUser();
+                    if (currentUser) {
+                        if (nameInput) nameInput.value = currentUser.name || '';
+                        if (collegeIdInput) collegeIdInput.value = currentUser.collegeId || '';
+                    }
+                    
+                    // Reset character counter
+                    if (charCounter) {
+                        charCounter.textContent = `0 / ${MAX_CHARS} characters`;
+                        charCounter.style.color = '';
+                    }
+                    
+                    // Add confetti effect on success
+                    for (let i = 0; i < 30; i++) {
+                        const confetti = document.createElement('div');
+                        confetti.style.cssText = `
+                            position: fixed; top: -10px; left: ${Math.random() * 100}%;
+                            width: ${Math.random() * 8 + 4}px; height: ${Math.random() * 12 + 6}px;
+                            background: ${['#2f7fa2', '#10b981', '#f59e0b'][Math.floor(Math.random() * 3)]};
+                            border-radius: ${Math.random() > 0.5 ? '50%' : '2px'};
+                            pointer-events: none; z-index: 10000;
+                            animation: fall ${Math.random() * 2 + 2}s linear forwards;
+                        `;
+                        document.body.appendChild(confetti);
+                        setTimeout(() => confetti.remove(), 4000);
+                    }
+                });
+            }
+        }
+        
+        // Add confetti animation style
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fall {
+                0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+                100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

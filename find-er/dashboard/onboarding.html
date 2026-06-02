@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Onboarding | Find-ER</title>
+    <link rel="icon" href="../assets/images/logo1.png">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/layout.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/utilities.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script>
+        // Check if already onboarded
+        if (localStorage.getItem('findER_onboarded') === 'true') {
+            window.location.replace('student-dashboard.html');
+        }
+    </script>
+</head>
+<body>
+<div class="bg-pattern"></div>
+<main style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:40px 20px">
+    <div style="max-width:640px;width:100%;margin:0 auto">
+        <div id="onboardDots" style="display:flex;gap:8px;justify-content:center;margin-bottom:24px">
+            <span class="od" style="width:32px;height:6px;border-radius:3px;background:var(--brand-1);transition:all .3s"></span>
+            <span class="od" style="width:8px;height:6px;border-radius:3px;background:var(--border);transition:all .3s"></span>
+            <span class="od" style="width:8px;height:6px;border-radius:3px;background:var(--border);transition:all .3s"></span>
+            <span class="od" style="width:8px;height:6px;border-radius:3px;background:var(--border);transition:all .3s"></span>
+        </div>
+
+        <div id="obStep1" class="table-container" style="text-align:center;padding:40px">
+            <div style="font-size:64px;margin-bottom:16px">👋</div>
+            <h2 style="font-family:'Inter',sans-serif;font-size:26px;font-weight:800;margin-bottom:10px;color:var(--text-1)">Welcome to Find-ER</h2>
+            <p style="color:var(--text-3);max-width:480px;margin:0 auto 24px;line-height:1.7">Find-ER is your campus Lost &amp; Found portal. Report lost items, browse found items, and get reunited with your belongings quickly and safely.</p>
+            <div style="height:180px;border-radius:var(--radius-xl);background:linear-gradient(135deg,var(--brand-bg),#e0e7ff);display:flex;align-items:center;justify-content:center;gap:24px;font-size:48px;border:1px solid var(--brand-border)">
+                🎒&nbsp;📱&nbsp;🔑&nbsp;💻
+            </div>
+        </div>
+
+        <div id="obStep2" class="table-container" style="text-align:center;padding:40px;display:none">
+            <div style="font-size:64px;margin-bottom:16px">📝</div>
+            <h2 style="font-family:'Inter',sans-serif;font-size:26px;font-weight:800;margin-bottom:10px;color:var(--text-1)">Report in Minutes</h2>
+            <p style="color:var(--text-3);max-width:480px;margin:0 auto 24px;line-height:1.7">Submit a lost or found item report in under 2 minutes. Include a photo, location, and description to help us match items faster.</p>
+            <div style="height:180px;border-radius:var(--radius-xl);background:linear-gradient(135deg,#f0fdf4,#dcfce7);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;border:1px solid #a7f3d0">
+                <div style="font-size:36px">📋</div>
+                <p style="color:var(--emerald-text);font-weight:700;font-size:15px">Report Item → Fill Form → Submit</p>
+            </div>
+        </div>
+
+        <div id="obStep3" class="table-container" style="text-align:center;padding:40px;display:none">
+            <div style="font-size:64px;margin-bottom:16px">🔔</div>
+            <h2 style="font-family:'Inter',sans-serif;font-size:26px;font-weight:800;margin-bottom:10px;color:var(--text-1)">Stay Notified</h2>
+            <p style="color:var(--text-3);max-width:480px;margin:0 auto 24px;line-height:1.7">Receive instant notifications when your item status is updated or a match is found. Check the Notifications page regularly for updates.</p>
+            <div style="height:180px;border-radius:var(--radius-xl);background:linear-gradient(135deg,#fef3c7,#fde68a);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;border:1px solid #fcd34d">
+                <div style="font-size:36px">✅</div>
+                <p style="color:var(--amber-text);font-weight:700;font-size:15px">Status Update → Match Alert → Pickup Notice</p>
+            </div>
+        </div>
+
+        <div id="obStep4" class="table-container" style="text-align:center;padding:40px;display:none">
+            <div style="font-size:64px;margin-bottom:16px">🏢</div>
+            <h2 style="font-family:'Inter',sans-serif;font-size:26px;font-weight:800;margin-bottom:10px;color:var(--text-1)">Collect Your Item</h2>
+            <p style="color:var(--text-3);max-width:480px;margin:0 auto 24px;line-height:1.7">Once matched, visit the Lost &amp; Found Office with your College ID to collect your item. It's that simple!</p>
+            <div style="height:180px;border-radius:var(--radius-xl);background:linear-gradient(135deg,var(--brand-bg),#e0e7ff);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;border:1px solid var(--brand-border)">
+                <div style="font-size:36px">📍</div>
+                <p style="color:var(--brand-1);font-weight:700;font-size:15px">Admin Block, Room 205 &bull; Mon–Fri &bull; 9AM–4PM</p>
+            </div>
+        </div>
+
+        <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:24px">
+            <button class="btn btn-outline" id="onboardBackBtn" style="display:none">← Back</button>
+            <button class="btn btn-outline" id="onboardSkipBtn">Skip</button>
+            <button class="btn btn-primary" id="onboardNextBtn">Next →</button>
+            <button class="btn btn-primary" id="onboardGetStartedBtn" style="display:none;background:linear-gradient(135deg,var(--success),#059669)">🚀 Get Started</button>
+        </div>
+    </div>
+</main>
+
+<script>
+(function(){
+    var step=1,total=4;
+    var dots=document.querySelectorAll('.od');
+    function showStep(n){
+        for(var i=1;i<=total;i++){
+            var el=document.getElementById('obStep'+i);
+            if(el) el.style.display=i===n?'block':'none';
+        }
+        dots.forEach(function(d,i){
+            d.style.width=i<n?'32px':'8px';
+            d.style.background=i<n?'var(--brand-1)':'var(--border)';
+        });
+        document.getElementById('onboardBackBtn').style.display=n>1?'inline-flex':'none';
+        document.getElementById('onboardNextBtn').style.display=n<total?'inline-flex':'none';
+        document.getElementById('onboardGetStartedBtn').style.display=n===total?'inline-flex':'none';
+    }
+    var finish=function(){
+        try{localStorage.setItem('findER_onboarded','true')}catch(e){}
+        window.location.replace('student-dashboard.html');
+    };
+    document.getElementById('onboardNextBtn').addEventListener('click',function(){if(step<total){step++;showStep(step);}});
+    document.getElementById('onboardBackBtn').addEventListener('click',function(){if(step>1){step--;showStep(step);}});
+    document.getElementById('onboardSkipBtn').addEventListener('click',finish);
+    document.getElementById('onboardGetStartedBtn').addEventListener('click',finish);
+    showStep(1);
+})();
+</script>
+<script src="../js/constants.js"></script>
+<script src="../js/helpers.js"></script>
+<script src="../js/storage.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/ui.js"></script>
+<script src="../js/app.js"></script>
+</body>
+</html>

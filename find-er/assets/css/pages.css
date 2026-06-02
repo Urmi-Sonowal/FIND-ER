@@ -1,0 +1,127 @@
+/* Page-specific styles for FAQ, Contact, Instructions */
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 30px 20px;
+}
+
+.page-hero {
+    background: linear-gradient(180deg, rgba(15,23,42,0.03), rgba(255,255,255,0));
+    padding: 48px 0;
+    border-bottom: 1px solid var(--surface-2);
+}
+
+.page-hero h1 {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.page-hero .lead {
+    color: var(--text-3);
+    margin-bottom: 0;
+}
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: 24px;
+}
+
+.faq-item {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 18px rgba(2,6,23,0.04);
+}
+
+.faq-item h3 {
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+
+.instruction-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    margin-top: 24px;
+}
+
+.card {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 18px rgba(2,6,23,0.04);
+}
+
+.tips {
+    list-style: disc;
+    margin-left: 20px;
+}
+
+.contact-split {
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 18px;
+    align-items: start;
+}
+
+.contact-map-placeholder img {
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.contact-form-card {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 18px rgba(2,6,23,0.04);
+}
+
+.floating-label-group {
+    position: relative;
+    margin-bottom: 14px;
+}
+
+.floating-label-group input,
+.floating-label-group textarea,
+.floating-label-group select {
+    width: 100%;
+    padding: 12px 12px 12px 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: transparent;
+}
+
+.floating-label-group label {
+    position: absolute;
+    top: 10px;
+    left: 12px;
+    font-size: 13px;
+    color: var(--text-3);
+    transition: transform 0.15s ease, font-size 0.15s ease;
+    pointer-events: none;
+}
+
+.floating-label-group input:focus + label,
+.floating-label-group input:not(:placeholder-shown) + label,
+.floating-label-group textarea:focus + label,
+.floating-label-group textarea:not(:placeholder-shown) + label,
+.floating-label-group select:focus + label,
+.floating-label-group select:not([value=""]) + label {
+    transform: translateY(-22px);
+    font-size: 12px;
+}
+
+@media (max-width: 900px) {
+    .faq-grid { grid-template-columns: repeat(2, 1fr); }
+    .instruction-cards { grid-template-columns: 1fr; }
+    .contact-split { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 520px) {
+    .faq-grid { grid-template-columns: 1fr; }
+}

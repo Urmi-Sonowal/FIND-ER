@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item Details | Find-ER</title>
+    <meta name="description" content="View complete details for a specific Find-ER report item">
+    <link rel="icon" href="../assets/images/logo1.png">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/layout.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/utilities.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link rel="stylesheet" href="../assets/css/notifications.css">
+    <link rel="stylesheet" href="../assets/css/modals.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <style>
+        /* Item detail responsive fixes */
+        .table-container { max-width: 1000px; margin: 0 auto; padding: 16px; }
+        .table-container > div[style] { padding: 0; }
+        .table-container .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        @media (max-width: 860px) {
+            .table-container .detail-grid { grid-template-columns: 1fr; }
+            .table-container { padding: 12px; }
+        }
+        #itemDetailImageWrap { width: 100%; height: 320px; border-radius: 12px; overflow: hidden; }
+        @media (max-width: 520px) { #itemDetailImageWrap { height: 220px; } }
+        .detail-timeline { display:flex; gap:12px; align-items:center; margin-top:12px; flex-wrap:wrap }
+        .detail-timeline .tl-step { min-width:80px; text-align:center; }
+        .detail-timeline .tl-circle { width:30px; height:30px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; margin:0 auto 8px; }
+        .item-card-body .item-reporter { margin-top:8px; }
+        .btn { white-space:nowrap; }
+    </style>
+</head>
+<body>
+<div class="bg-pattern"></div>
+<div id="loader-container"></div>
+<div class="app-container">
+    <div id="sidebar-container"></div>
+    <main class="main-content">
+        <div id="top-header-container"></div>
+        <div class="dashboard-container">
+            <div style="display:flex;gap:12px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;margin-bottom:20px">
+                <div>
+                    <h2 id="itemDetailTitle" style="font-family:'Inter',sans-serif;font-size:22px;font-weight:800;margin-bottom:4px">Item Details</h2>
+                    <div id="itemDetailSubtitle" style="color:var(--text-3);font-size:13px">Category &bull; Location &bull; Date</div>
+                </div>
+                <div style="display:flex;gap:8px;flex-wrap:wrap">
+                    <button class="btn btn-outline" id="itemBackBtn">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg> Back
+                    </button>
+                    <button class="btn btn-outline" id="itemShareBtn">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg> Share
+                    </button>
+                    <button class="btn btn-primary" id="itemPrintBtn">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg> Print
+                    </button>
+                    <button class="btn btn-success" id="itemClaimBtn" style="display:none;background:linear-gradient(135deg,#10b981,#059669);color:white;">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Claim Item
+                    </button>
+                </div>
+            </div>
+
+            <div class="table-container" style="max-width:900px">
+                <div style="border:1px solid var(--border);border-radius:var(--radius-xl);padding:20px">
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+                        <div>
+                            <div id="itemDetailImageWrap" style="height:240px;background:linear-gradient(135deg,var(--brand-bg),#e0e7ff);border-radius:var(--radius-xl);display:flex;align-items:center;justify-content:center;font-size:72px;border:1px solid var(--border);overflow:hidden">
+                                📦
+                            </div>
+                        </div>
+                        <div id="itemDetailInfoGrid" style="display:flex;flex-direction:column;gap:12px"></div>
+                    </div>
+                    <div style="margin-top:20px">
+                        <h3 style="font-weight:800;margin-bottom:10px;color:var(--text-1)">Status Timeline</h3>
+                        <div id="itemDetailTimeline" class="detail-timeline"></div>
+                    </div>
+                    <div style="margin-top:16px">
+                        <h3 style="font-weight:800;margin-bottom:8px;color:var(--text-1)">Description</h3>
+                        <p id="itemDetailDescription" style="color:var(--text-3);font-size:14px;line-height:1.7">Loading...</p>
+                    </div>
+                    <div id="itemDetailAdminControls" style="margin-top:16px;display:none"></div>
+                </div>
+            </div>
+        </div>
+        <div id="footer-container"></div>
+    </main>
+</div>
+
+<script src="../js/constants.js"></script>
+<script src="../js/helpers.js"></script>
+<script src="../js/storage.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/ui.js"></script>
+<script src="../js/dropdowns.js"></script>
+<script src="../js/modals.js"></script>
+<script src="../js/loaders.js"></script>
+<script src="../js/notifications.js"></script>
+<script src="../js/search.js"></script>
+<script src="../js/reports.js"></script>
+<script src="../js/dashboard.js"></script>
+<script src="../js/app.js"></script>
+<script>
+    Promise.all([
+        fetch('../components/sidebar.html').then(res => res.text()),
+        fetch('../components/top-header.html').then(res => res.text()),
+        fetch('../components/footer.html').then(res => res.text()),
+        fetch('../components/loader.html').then(res => res.text())
+    ]).then(([sidebar, header, footer, loader]) => {
+        document.getElementById('sidebar-container').innerHTML = sidebar;
+        document.getElementById('top-header-container').innerHTML = header;
+        document.getElementById('footer-container').innerHTML = footer;
+        document.getElementById('loader-container').innerHTML = loader;
+        
+        setTimeout(() => {
+            if (window.FindERUI) window.FindERUI.init();
+            if (window.FindERDashboard) window.FindERDashboard.init();
+            if (window.FindERNotifications) window.FindERNotifications.init();
+            if (window.lucide) lucide.createIcons();
+            if (window.FindERApp) window.FindERApp.reinit();
+            
+            const loaderEl = document.getElementById('pageLoader');
+            if (loaderEl) {
+                setTimeout(() => {
+                    loaderEl.classList.add('hidden');
+                    setTimeout(() => loaderEl.style.display = 'none', 500);
+                }, 500);
+            }
+        }, 100);
+    });
+</script>
+</body>
+</html>
