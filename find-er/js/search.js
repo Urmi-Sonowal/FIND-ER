@@ -191,4 +191,4 @@ const Search = (function() {
     };
 })();
 
-window.FindERSearch = Search;
+window.TraceItSearch = Search;

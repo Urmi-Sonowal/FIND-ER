@@ -124,7 +124,7 @@ const Modals = (function() {
             <div class="modal-container" role="dialog" aria-modal="true">
                 <div class="modal-header">
                     ${options.icon ? `<div class="modal-icon">${options.icon}</div>` : ''}
-                    <h3 class="modal-title">${Helpers.escapeHtml(options.title || 'Find-ER')}</h3>
+                    <h3 class="modal-title">${Helpers.escapeHtml(options.title || 'TraceIt')}</h3>
                     <button type="button" class="modal-close" aria-label="Close">×</button>
                 </div>
                 <div class="modal-content">
@@ -167,7 +167,7 @@ const Modals = (function() {
         return modal;
     }
     
-    function showAlert(message, title = 'Find-ER', type = 'info') {
+    function showAlert(message, title = 'TraceIt', type = 'info') {
         const iconMap = {
             success: '✓',
             error: '✗',
@@ -289,4 +289,4 @@ const Modals = (function() {
     };
 })();
 
-window.FindERModals = Modals;
+window.TraceItModals = Modals;

@@ -257,7 +257,7 @@ const Auth = (function() {
         }
         
         // Check for registration success message
-        const registerSuccess = sessionStorage.getItem('findER_registerSuccess');
+        const registerSuccess = sessionStorage.getItem('TraceIt_registerSuccess');
         if (registerSuccess) {
             setTimeout(() => {
                 const toast = document.createElement('div');
@@ -277,7 +277,7 @@ const Auth = (function() {
                 document.body.appendChild(toast);
                 setTimeout(() => toast.remove(), 3000);
             }, 100);
-            sessionStorage.removeItem('findER_registerSuccess');
+            sessionStorage.removeItem('TraceIt_registerSuccess');
         }
     }
     
@@ -495,7 +495,7 @@ const Auth = (function() {
             submitBtn.innerHTML = originalText;
             submitBtn.disabled = false;
             
-            sessionStorage.setItem('findER_registerSuccess', 'Registration successful! Please login.');
+            sessionStorage.setItem('TraceIt_registerSuccess', 'Registration successful! Please login.');
             window.location.href = 'login.html';
         });
         
@@ -549,4 +549,4 @@ const Auth = (function() {
 })();
 
 // Make available globally
-window.FindERAuth = Auth;
+window.TraceItAuth = Auth;

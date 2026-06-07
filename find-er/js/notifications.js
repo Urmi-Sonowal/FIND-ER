@@ -239,4 +239,4 @@ const Notifications = (function() {
     };
 })();
 
-window.FindERNotifications = Notifications;
+window.TraceItNotifications = Notifications;

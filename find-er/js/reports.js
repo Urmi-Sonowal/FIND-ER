@@ -198,7 +198,7 @@ const Reports = (function() {
             'Reported At': new Date(r.reportedAt).toLocaleString()
         }));
         
-        return Helpers.downloadCSV(exportData, 'find-er-reports');
+        return Helpers.downloadCSV(exportData, 'traceit-reports');
     }
     
     function exportToJSON() {
@@ -212,7 +212,7 @@ const Reports = (function() {
             }))
         };
         
-        return Helpers.downloadJSON(exportData, 'find-er-reports');
+        return Helpers.downloadJSON(exportData, 'traceit-reports');
     }
     
     // Public API
@@ -234,4 +234,4 @@ const Reports = (function() {
     };
 })();
 
-window.FindERReports = Reports;
+window.TraceItReports = Reports;

@@ -649,7 +649,7 @@ function setupProfileDropdownFixed() {
             Location: r.location, Date: r.date, Status: getStatusDisplay(r.status),
             'Reported By': r.reporterId, Phone: r.phone, Email: r.email
         }));
-        downloadCSV(exportData, 'find-er-reports');
+        downloadCSV(exportData, 'traceit-reports');
         showToast('Export complete', 'success');
     }
     
@@ -1167,7 +1167,7 @@ function setupProfileDropdownFixed() {
     return { init };
 })();
 
-window.FindERDashboard = Dashboard;
+window.TraceItDashboard = Dashboard;
 
 function setupAllComponents() {
     updateSidebarAvatar();

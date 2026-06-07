@@ -153,7 +153,7 @@ const Dropdowns = (function() {
     };
 })();
 
-window.FindERDropdowns = Dropdowns;
+window.TraceItDropdowns = Dropdowns;
 
 // Auto-initialize when DOM is ready
 if (document.readyState === 'loading') {

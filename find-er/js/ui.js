@@ -449,7 +449,7 @@ const UI = (function() {
     };
 })();
 
-window.FindERUI = UI;
+window.TraceItUI = UI;
 // Expose icon refresh utility
 window.refreshIcons = function() {
     if (window.lucide && typeof window.lucide.createIcons === 'function') {

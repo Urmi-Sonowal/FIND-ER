@@ -312,8 +312,8 @@ const Helpers = (function() {
     
     // Show toast message (uses global FindER if available)
     function showToast(message, type = 'info', duration = 3000) {
-        if (window.FindER && typeof window.FindER.toast === 'function') {
-            window.FindER.toast(message, type, duration);
+        if (window.TraceIt && typeof window.TraceIt.toast === 'function') {
+            window.TraceIt.toast(message, type, duration);
             return;
         }
         
@@ -375,4 +375,4 @@ const Helpers = (function() {
     };
 })();
 
-window.FindERHelpers = Helpers;
+window.TraceItHelpers = Helpers;

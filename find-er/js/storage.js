@@ -6,20 +6,20 @@
 const Storage = (function() {
     // Storage keys
     const KEYS = {
-        USERS: 'findER_users',
-        REPORTS: 'findER_reports',
-        NOTIFICATIONS: 'findER_notifications',
-        CONTACT_MESSAGES: 'findER_contactMessages',
-        THEME: 'findER_theme',
-        RECENT_VIEWS: 'findER_recentViews',
-        ONBOARDED: 'findER_onboarded',
-        DRAFT: 'findER_draft'
+        USERS: 'TraceIt_users',
+        REPORTS: 'TraceIt_reports',
+        NOTIFICATIONS: 'TraceIt_notifications',
+        CONTACT_MESSAGES: 'TraceIt_contactMessages',
+        THEME: 'TraceIt_theme',
+        RECENT_VIEWS: 'TraceIt_recentViews',
+        ONBOARDED: 'TraceIt_onboarded',
+        DRAFT: 'TraceIt_draft'
     };
 
     // Session keys
     const SESSION_KEYS = {
         CURRENT_USER: 'currentUser',
-        REGISTER_SUCCESS: 'findER_registerSuccess'
+        REGISTER_SUCCESS: 'TraceIt_registerSuccess'
     };
 
     // Helper: safe JSON parse
@@ -759,7 +759,7 @@ const Storage = (function() {
 })();
 
 // Expose global
-window.FindERStorage = Storage;
+window.TraceItStorage = Storage;
 // Backwards compatibility: expose as `Storage` too for modules that reference it directly
 window.Storage = Storage;
 

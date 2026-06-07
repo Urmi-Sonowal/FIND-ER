@@ -190,4 +190,4 @@ const Filters = (function() {
     };
 })();
 
-window.FindERFilters = Filters;
+window.TraceItFilters = Filters;

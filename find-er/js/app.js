@@ -37,23 +37,23 @@
             };
 
             // Initialize modules (UI first)
-            safeInit('FindERUI', window.FindERUI && window.FindERUI.init);
-            safeInit('FindERAuth', window.FindERAuth && window.FindERAuth.init);
-            safeInit('FindERDropdowns', window.FindERDropdowns && window.FindERDropdowns.init);
-            safeInit('FindERModals', window.FindERModals && window.FindERModals.init);
-            safeInit('FindERLoaders', window.FindERLoaders && window.FindERLoaders.init);
-            safeInit('FindERNotifications', window.FindERNotifications && window.FindERNotifications.init);
-            safeInit('FindERSearch', window.FindERSearch && window.FindERSearch.init);
-            safeInit('FindERReports', window.FindERReports && window.FindERReports.init);
-            safeInit('FindERDashboard', window.FindERDashboard && window.FindERDashboard.init);
+            safeInit('TraceItUI', window.TraceItUI && window.TraceItUI.init);
+            safeInit('TraceItAuth', window.TraceItAuth && window.TraceItAuth.init);
+            safeInit('TraceItDropdowns', window.TraceItDropdowns && window.TraceItDropdowns.init);
+            safeInit('TraceItModals', window.TraceItModals && window.TraceItModals.init);
+            safeInit('TraceItLoaders', window.TraceItLoaders && window.TraceItLoaders.init);
+            safeInit('TraceItNotifications', window.TraceItNotifications && window.TraceItNotifications.init);
+            safeInit('TraceItSearch', window.TraceItSearch && window.TraceItSearch.init);
+            safeInit('TraceItReports', window.TraceItReports && window.TraceItReports.init);
+            safeInit('TraceItDashboard', window.TraceItDashboard && window.TraceItDashboard.init);
 
             // Initialize filters (if on lost/found page)
             initializeFiltersIfNeeded();
             
             // Run count-up animations
             setTimeout(() => {
-                if (window.FindERHelpers && typeof window.FindERHelpers.runCountUpAnimations === 'function') {
-                    window.FindERHelpers.runCountUpAnimations();
+                if (window.TraceItHelpers && typeof window.TraceItHelpers.runCountUpAnimations === 'function') {
+                    window.TraceItHelpers.runCountUpAnimations();
                 }
             }, 200);
             
@@ -63,12 +63,12 @@
             // Update user info in UI
             updateUserInfoInUI();
             
-            console.log('Find-ER initialized successfully');
+            console.log('TraceIt initialized successfully');
             
         } catch (error) {
-            console.error('Failed to initialize Find-ER:', error);
-            if (window.FindERUI && typeof window.FindERUI.showToast === 'function') {
-                window.FindERUI.showToast('Failed to load application. Please refresh the page.', 'error');
+            console.error('Failed to initialize TraceIt:', error);
+            if (window.TraceItUI && typeof window.TraceItUI.showToast === 'function') {
+                window.TraceItUI.showToast('Failed to load application. Please refresh the page.', 'error');
             }
         }
     }
@@ -79,8 +79,8 @@
         let users = [];
         if (window.Storage && typeof window.Storage.getUsers === 'function') {
             users = window.Storage.getUsers();
-        } else if (window.FindERStorage && typeof window.FindERStorage.getUsers === 'function') {
-            users = window.FindERStorage.getUsers();
+        } else if (window.TraceItStorage && typeof window.TraceItStorage.getUsers === 'function') {
+            users = window.TraceItStorage.getUsers();
         }
         
         if (!users || users.length === 0) {
@@ -91,8 +91,8 @@
         let reports = [];
         if (window.Storage && typeof window.Storage.getReports === 'function') {
             reports = window.Storage.getReports();
-        } else if (window.FindERStorage && typeof window.FindERStorage.getReports === 'function') {
-            reports = window.FindERStorage.getReports();
+        } else if (window.TraceItStorage && typeof window.TraceItStorage.getReports === 'function') {
+            reports = window.TraceItStorage.getReports();
         }
         
         if (!reports || reports.length === 0) {
@@ -103,15 +103,15 @@
         let notifStore = null;
         if (window.Storage && typeof window.Storage.getNotificationsStore === 'function') {
             notifStore = window.Storage.getNotificationsStore();
-        } else if (window.FindERStorage && typeof window.FindERStorage.getNotificationsStore === 'function') {
-            notifStore = window.FindERStorage.getNotificationsStore();
+        } else if (window.TraceItStorage && typeof window.TraceItStorage.getNotificationsStore === 'function') {
+            notifStore = window.TraceItStorage.getNotificationsStore();
         }
         
         if (!notifStore) {
             if (window.Storage && typeof window.Storage.saveNotificationsStore === 'function') {
                 window.Storage.saveNotificationsStore({});
-            } else if (window.FindERStorage && typeof window.FindERStorage.saveNotificationsStore === 'function') {
-                window.FindERStorage.saveNotificationsStore({});
+            } else if (window.TraceItStorage && typeof window.TraceItStorage.saveNotificationsStore === 'function') {
+                window.TraceItStorage.saveNotificationsStore({});
             }
         }
     }
@@ -143,11 +143,11 @@
             }
         ];
         
-        const storage = window.Storage || window.FindERStorage;
+        const storage = window.Storage || window.TraceItStorage;
         if (storage && typeof storage.saveUsers === 'function') {
             storage.saveUsers(defaultUsers);
         } else {
-            localStorage.setItem('findER_users', JSON.stringify(defaultUsers));
+            localStorage.setItem('TraceIt_users', JSON.stringify(defaultUsers));
         }
     }
     
@@ -159,9 +159,9 @@
                 type: 'lost',
                 name: 'College ID Card',
                 category: 'ID Card',
-                location: 'CSE Block, Room 205',
+                location: 'CSE Dept, Room 05',
                 date: new Date().toISOString(),
-                description: 'Student ID Card - Venkatasaarathy, CSE, 3rd Year',
+                description: 'Student ID Card - Sushmita, CSE, 3rd Year',
                 status: 'pending',
                 reporterId: 'STU001',
                 reportedBy: { name: 'Student User', collegeId: 'STU001' },
@@ -188,11 +188,11 @@
             }
         ];
         
-        const storage = window.Storage || window.FindERStorage;
+        const storage = window.Storage || window.TraceItStorage;
         if (storage && typeof storage.saveReports === 'function') {
             storage.saveReports(defaultReports);
         } else {
-            localStorage.setItem('findER_reports', JSON.stringify(defaultReports));
+            localStorage.setItem('TraceIt_reports', JSON.stringify(defaultReports));
         }
     }
     
@@ -212,13 +212,13 @@
             setTimeout(() => {
                 const type = page === 'lost.html' ? 'lost' : 'found';
                 let items = [];
-                const storage = window.Storage || window.FindERStorage;
+                const storage = window.Storage || window.TraceItStorage;
                 if (storage && typeof storage.getReportsByType === 'function') {
                     items = storage.getReportsByType(type);
                 }
                 
-                if (window.FindERFilters && typeof window.FindERFilters.init === 'function') {
-                    window.FindERFilters.init(type, items);
+                if (window.TraceItFilters && typeof window.TraceItFilters.init === 'function') {
+                    window.TraceItFilters.init(type, items);
                 }
             }, 300);
         }
@@ -241,13 +241,13 @@
             warningTimeoutId = setTimeout(() => {
                 if (!warningShown) {
                     const isLoggedIn = (window.Storage && window.Storage.isLoggedIn && window.Storage.isLoggedIn()) ||
-                                      (window.FindERStorage && window.FindERStorage.isLoggedIn && window.FindERStorage.isLoggedIn());
+                                      (window.TraceItStorage && window.TraceItStorage.isLoggedIn && window.TraceItStorage.isLoggedIn());
                     if (isLoggedIn) {
                         warningShown = true;
-                        if (window.FindERModals && typeof window.FindERModals.showAlert === 'function') {
-                            window.FindERModals.showAlert('Your session will expire in 5 minutes due to inactivity.', 'Session Warning', 'warning');
-                        } else if (window.FindER && typeof window.FindER.alert === 'function') {
-                            window.FindER.alert('Your session will expire in 5 minutes due to inactivity.', 'Session Warning');
+                        if (window.TraceItModals && typeof window.TraceItModals.showAlert === 'function') {
+                            window.TraceItModals.showAlert('Your session will expire in 5 minutes due to inactivity.', 'Session Warning', 'warning');
+                        } else if (window.TraceIt && typeof window.TraceIt.alert === 'function') {
+                            window.TraceIt.alert('Your session will expire in 5 minutes due to inactivity.', 'Session Warning');
                         }
                     }
                 }
@@ -255,17 +255,17 @@
             
             timeoutId = setTimeout(() => {
                 const isLoggedIn = (window.Storage && window.Storage.isLoggedIn && window.Storage.isLoggedIn()) ||
-                                  (window.FindERStorage && window.FindERStorage.isLoggedIn && window.FindERStorage.isLoggedIn());
+                                  (window.TraceItStorage && window.TraceItStorage.isLoggedIn && window.TraceItStorage.isLoggedIn());
                 if (isLoggedIn) {
                     if (window.Storage && typeof window.Storage.clearCurrentUser === 'function') {
                         window.Storage.clearCurrentUser();
-                    } else if (window.FindERStorage && typeof window.FindERStorage.clearCurrentUser === 'function') {
-                        window.FindERStorage.clearCurrentUser();
+                    } else if (window.TraceItStorage && typeof window.TraceItStorage.clearCurrentUser === 'function') {
+                        window.TraceItStorage.clearCurrentUser();
                     }
-                    if (window.FindERModals && typeof window.FindERModals.showAlert === 'function') {
-                        window.FindERModals.showAlert('Your session has expired. Please login again.', 'Session Expired', 'error');
-                    } else if (window.FindER && typeof window.FindER.alert === 'function') {
-                        window.FindER.alert('Your session has expired. Please login again.', 'Session Expired');
+                    if (window.TraceItModals && typeof window.TraceItModals.showAlert === 'function') {
+                        window.TraceItModals.showAlert('Your session has expired. Please login again.', 'Session Expired', 'error');
+                    } else if (window.TraceIt && typeof window.TraceIt.alert === 'function') {
+                        window.TraceIt.alert('Your session has expired. Please login again.', 'Session Expired');
                     }
                     setTimeout(() => {
                         window.location.href = 'login.html';
@@ -284,13 +284,13 @@
     // Update user info in UI
     function updateUserInfoInUI() {
         let currentUser = null;
-        const storage = window.Storage || window.FindERStorage;
+        const storage = window.Storage || window.TraceItStorage;
         if (storage && typeof storage.getCurrentUser === 'function') {
             currentUser = storage.getCurrentUser();
         }
         
-        if (currentUser && window.FindERUI && typeof window.FindERUI.updateUserInfo === 'function') {
-            window.FindERUI.updateUserInfo(currentUser);
+        if (currentUser && window.TraceItUI && typeof window.TraceItUI.updateUserInfo === 'function') {
+            window.TraceItUI.updateUserInfo(currentUser);
         }
     }
     
@@ -311,7 +311,7 @@
     });
     
     // Expose global modules
-    window.FindERApp = {
+    window.TraceItApp = {
         initialized: () => isInitialized,
         init: initializeApp,
         reinit: () => initializeApp(true)

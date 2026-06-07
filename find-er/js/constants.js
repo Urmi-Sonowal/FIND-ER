@@ -5,7 +5,7 @@
 
 const Constants = {
     // App Info
-    APP_NAME: 'Find-ER',
+    APP_NAME: 'TraceIt',
     APP_VERSION: '1.0.0',
     
     // Admin credentials (hashed)
@@ -60,20 +60,20 @@ const Constants = {
     
     // Storage keys
     STORAGE_KEYS: {
-        USERS: 'findER_users',
-        REPORTS: 'findER_reports',
-        NOTIFICATIONS: 'findER_notifications',
-        CONTACT_MESSAGES: 'findER_contactMessages',
-        THEME: 'findER_theme',
-        RECENT_VIEWS: 'findER_recentViews',
-        ONBOARDED: 'findER_onboarded',
-        DRAFT: 'findER_draft'
+        USERS: 'TraceIt_users',
+        REPORTS: 'TraceIt_reports',
+        NOTIFICATIONS: 'TraceIt_notifications',
+        CONTACT_MESSAGES: 'TraceIt_contactMessages',
+        THEME: 'TraceIt_theme',
+        RECENT_VIEWS: 'TraceIt_recentViews',
+        ONBOARDED: 'TraceIt_onboarded',
+        DRAFT: 'TraceIt_draft'
     },
     
     // Session keys
     SESSION_KEYS: {
         CURRENT_USER: 'currentUser',
-        REGISTER_SUCCESS: 'findER_registerSuccess'
+        REGISTER_SUCCESS: 'TraceIt_registerSuccess'
     },
     
     // Category icons
@@ -155,4 +155,4 @@ Constants.getStatusClass = function(status) {
 };
 
 // Make available globally
-window.FindERConstants = Constants;
+window.TraceItConstants = Constants;
