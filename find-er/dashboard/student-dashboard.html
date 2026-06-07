@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Dashboard | Find-ER</title>
+    <title>Student Dashboard | TraceIt</title>
     <link rel="icon" href="../assets/images/logo1.png">
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/layout.css">
@@ -58,7 +58,7 @@
 </style>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body class="find-er-app">
+<body class="traceit-app">
     <div class="bg-pattern"></div>
     <div id="loader-container"></div>
     
@@ -208,7 +208,7 @@
             
             setTimeout(() => {
                 if (window.lucide) lucide.createIcons();
-                if (window.FindERApp) window.FindERApp.reinit();
+                if (window.TraceItApp) window.TraceItApp.reinit();
                 // Hide loader
                 const loaderEl = document.getElementById('pageLoader');
                 if (loaderEl) { loaderEl.classList.add('hidden'); setTimeout(() => loaderEl.style.display = 'none', 500); }

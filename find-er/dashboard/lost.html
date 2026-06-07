@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lost Items | Find-ER</title>
+    <title>Lost Items | TraceIt</title>
     <link rel="icon" href="../assets/images/logo1.png">
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/layout.css">
@@ -37,7 +37,7 @@
         @media (max-width: 768px) { .items-header { flex-direction: column; } .filter-section { width: 100%; } .search-box input { width: 100%; } }
     </style>
 </head>
-<body class="find-er-app">
+<body class="traceit-app">
     <div class="bg-pattern"></div>
     <div id="loader-container"></div>
     
@@ -114,7 +114,7 @@
             
             setTimeout(() => {
                 if (window.lucide) lucide.createIcons();
-                if (window.FindERApp) window.FindERApp.reinit();
+                if (window.TraceItApp) window.TraceItApp.reinit();
                 loadLostItems();
                 // Refresh sidebar badges and notifications
                 if (typeof refreshNavCounts === 'function') refreshNavCounts();
@@ -125,8 +125,8 @@
         
         // Update sidebar/found badges and notification badges
         function refreshNavCounts() {
-            const storage = window.Storage || window.FindERStorage;
-            const reports = storage && typeof storage.getReports === 'function' ? storage.getReports() : JSON.parse(localStorage.getItem('findER_reports') || '[]');
+            const storage = window.Storage || window.TraceItStorage;
+            const reports = storage && typeof storage.getReports === 'function' ? storage.getReports() : JSON.parse(localStorage.getItem('TraceIt_reports') || '[]');
             const lostCount = (reports || []).filter(r => r.type === 'lost').length;
             const foundCount = (reports || []).filter(r => r.type === 'found').length;
             const lostBadge = document.getElementById('lostBadge');
@@ -143,7 +143,7 @@
         }
         
         function loadLostItems() {
-            const reports = JSON.parse(localStorage.getItem('findER_reports') || '[]');
+            const reports = JSON.parse(localStorage.getItem('TraceIt_reports') || '[]');
             const lostItems = reports.filter(r => r.type === 'lost');
             
             // Update stats

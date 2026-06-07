@@ -33,7 +33,7 @@ html, body {
     padding: 0;
 }
 
-.find-er-app {
+.traceit-app {
     margin: 0;
     padding: 0;
 }
@@ -56,7 +56,7 @@ html, body {
     box-sizing: border-box;
 }
 
-body.find-er-app {
+body.traceit-app {
     background: var(--bg-main);
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     min-height: 100vh;

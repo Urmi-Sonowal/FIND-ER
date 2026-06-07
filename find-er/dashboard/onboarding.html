@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome Onboarding | Find-ER</title>
+    <title>Welcome Onboarding | TraceIt</title>
     <link rel="icon" href="../assets/images/logo1.png">
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/layout.css">
@@ -14,7 +14,7 @@
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
     <script>
         // Check if already onboarded
-        if (localStorage.getItem('findER_onboarded') === 'true') {
+        if (localStorage.getItem('TraceIt_onboarded') === 'true') {
             window.location.replace('student-dashboard.html');
         }
     </script>
@@ -32,8 +32,8 @@
 
         <div id="obStep1" class="table-container" style="text-align:center;padding:40px">
             <div style="font-size:64px;margin-bottom:16px">👋</div>
-            <h2 style="font-family:'Inter',sans-serif;font-size:26px;font-weight:800;margin-bottom:10px;color:var(--text-1)">Welcome to Find-ER</h2>
-            <p style="color:var(--text-3);max-width:480px;margin:0 auto 24px;line-height:1.7">Find-ER is your campus Lost &amp; Found portal. Report lost items, browse found items, and get reunited with your belongings quickly and safely.</p>
+            <h2 style="font-family:'Inter',sans-serif;font-size:26px;font-weight:800;margin-bottom:10px;color:var(--text-1)">Welcome to TraceIt</h2>
+            <p style="color:var(--text-3);max-width:480px;margin:0 auto 24px;line-height:1.7">TraceIt is your campus Lost &amp; Found portal. Report lost items, browse found items, and get reunited with your belongings quickly and safely.</p>
             <div style="height:180px;border-radius:var(--radius-xl);background:linear-gradient(135deg,var(--brand-bg),#e0e7ff);display:flex;align-items:center;justify-content:center;gap:24px;font-size:48px;border:1px solid var(--brand-border)">
                 🎒&nbsp;📱&nbsp;🔑&nbsp;💻
             </div>
@@ -96,7 +96,7 @@
         document.getElementById('onboardGetStartedBtn').style.display=n===total?'inline-flex':'none';
     }
     var finish=function(){
-        try{localStorage.setItem('findER_onboarded','true')}catch(e){}
+        try{localStorage.setItem('TraceIt_onboarded','true')}catch(e){}
         window.location.replace('student-dashboard.html');
     };
     document.getElementById('onboardNextBtn').addEventListener('click',function(){if(step<total){step++;showStep(step);}});

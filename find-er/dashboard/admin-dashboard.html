@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard | Find-ER</title>
+    <title>Admin Dashboard | TraceIt</title>
     <link rel="icon" href="../assets/images/logo1.png">
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/layout.css">
@@ -30,7 +30,7 @@
     }
 </style>
 </head>
-<body class="find-er-app">
+<body class="traceit-app">
     <div class="bg-pattern" aria-hidden="true"></div>
     <div id="loader-container"></div>
     <div class="app-container">
@@ -205,10 +205,10 @@
             document.getElementById('loader-container').innerHTML = loader;
             
             setTimeout(() => {
-                if (window.FindERUI) window.FindERUI.init();
-                if (window.FindERDashboard) window.FindERDashboard.init();
-                if (window.FindERNotifications) window.FindERNotifications.init();
-                if (window.FindERSearch) window.FindERSearch.init();
+                if (window.TraceItUI) window.TraceItUI.init();
+                if (window.TraceItDashboard) window.TraceItdashboard.init();
+                if (window.TraceItNotifications) window.TraceItNotifications.init();
+                if (window.TraceItSearch) window.TraceItSearch.init();
                 if (window.lucide) lucide.createIcons();
                 
                 const loaderEl = document.getElementById('pageLoader');

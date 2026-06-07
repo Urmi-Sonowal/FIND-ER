@@ -1,3 +1,4 @@
+
 /* ========================================
    FIND-ER COMPONENTS CSS
    Reusable UI components
@@ -1004,7 +1005,7 @@ textarea.form-control {
     resize: vertical;
 }
 /* For dashboard pages, adjust main content */
-.find-er-app .main-content {
+.traceit-app .main-content {
     margin-top: 0;
 }
 

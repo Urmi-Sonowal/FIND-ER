@@ -1,4 +1,4 @@
-# FIND-ER 🔍
+# TraceIt 🔍
 
 > A Campus Lost & Found Portal designed to help students and staff report, track, and recover lost belongings efficiently.
 
@@ -11,7 +11,7 @@
 
 ## 📖 Overview
 
-FIND-ER is a web-based Lost & Found Management System developed to simplify the process of reporting, tracking, and recovering lost items within a college campus.
+TraceIt is a web-based Lost & Found Management System developed to simplify the process of reporting, tracking, and recovering lost items within a college campus.
 
 The platform provides dedicated interfaces for both students and administrators, enabling efficient item management, status tracking, notifications, and recovery workflows.
 
@@ -62,7 +62,7 @@ This project was developed as a frontend-focused application using HTML, CSS, an
 ## 🏗️ Project Structure
 
 ```text
-FIND-ER/
+TraceIt/
 │
 ├── assets/
 │   ├── css/
@@ -182,7 +182,7 @@ _Add screenshot here_
 ### Clone Repository
 
 ```bash
-git clone https://github.com/Venkat-1506/FIND-ER.git
+git clone https://github.com/Venkat-1506/TraceIt.git
 ```
 
 ### Open Project
@@ -246,5 +246,5 @@ It helps motivate future improvements and development.
 
 ---
 
-### FIND-ER
+### TraceIt
 _Reconnecting students with their belongings._

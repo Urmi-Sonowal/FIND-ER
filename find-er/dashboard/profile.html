@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile | Find-ER</title>
-    <meta name="description" content="Your Find-ER profile and settings">
+    <title>Profile | TraceIt</title>
+    <meta name="description" content="Your TraceIt profile and settings">
     <link rel="icon" href="../assets/images/logo1.png">
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/layout.css">
@@ -188,9 +188,9 @@
         document.getElementById('loader-container').innerHTML = loader;
         
         setTimeout(() => {
-            if (window.FindERUI) window.FindERUI.init();
-            if (window.FindERDashboard) window.FindERDashboard.init();
-            if (window.FindERNotifications) window.FindERNotifications.init();
+            if (window.TraceItUI) window.TraceItUI.init();
+            if (window.TraceItDashboard) window.TraceItDashboard.init();
+            if (window.TraceItNotifications) window.TraceItNotifications.init();
             if (window.lucide) lucide.createIcons();
             
             const loaderEl = document.getElementById('pageLoader');

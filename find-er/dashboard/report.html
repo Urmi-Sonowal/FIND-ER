@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Report Item | Find-ER</title>
+    <title>Report Item | TraceIt</title>
     <link rel="icon" href="../assets/images/logo1.png">
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/layout.css">
@@ -20,7 +20,7 @@
             box-sizing: border-box;
         }
         
-        body.find-er-app {
+        body.traceit-app {
             background: #f1f5f9;
             overflow-x: hidden;
         }
@@ -490,7 +490,7 @@
     </style>
     
 </head>
-<body class="find-er-app">
+<body class="traceit-app">
     <div class="bg-pattern"></div>
     <div id="loader-container"></div>
     
@@ -730,7 +730,7 @@
             
             setTimeout(() => {
                 if (window.lucide) lucide.createIcons();
-                if (window.FindERApp) window.FindERApp.reinit();
+                if (window.TraceItApp) window.TraceItApp.reinit();
                 initReportPage();
                 const loaderEl = document.getElementById('pageLoader');
                 if (loaderEl) { loaderEl.classList.add('hidden'); setTimeout(() => loaderEl.style.display = 'none', 500); }
@@ -968,9 +968,9 @@
             };
             
             // Save to storage
-            const reports = JSON.parse(localStorage.getItem('findER_reports') || '[]');
+            const reports = JSON.parse(localStorage.getItem('TraceIt_reports') || '[]');
             reports.push(report);
-            localStorage.setItem('findER_reports', JSON.stringify(reports));
+            localStorage.setItem('TraceIt_reports', JSON.stringify(reports));
             
             document.getElementById('loadingOverlay').classList.remove('active');
             

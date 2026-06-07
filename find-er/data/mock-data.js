@@ -724,7 +724,7 @@ const MockData = (function() {
 })();
 
 // Make available globally
-window.FindERMockData = MockData;
+window.TraceItMockData = MockData;
 
 // Also expose individual helpers for console usage
 window.mockData = {
